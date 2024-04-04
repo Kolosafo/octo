@@ -30,4 +30,8 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+  .fullCenter {
+    justify-content: center;
+    align-items: center;
+  }
 }
