@@ -17,8 +17,15 @@ export type GridType = {
 export type StudentResponseType = {
   responseType: "text" | "voice";
 };
+export type InteractiveLearningImageType = {
+  src: string;
+  name: string;
+  label: string;
+  id: string;
+  onClick?: (param?: any) => void;
+};
 export type InteractiveLearningType = {
-  image?: string;
+  image?: InteractiveLearningImageType[];
   aiText: string;
   studentResponse: StudentResponseType[] | null;
 };
@@ -33,8 +40,10 @@ export type AiGridResponseType = {
 };
 
 export type AiInteractiveLearningResponseType = {
-  question: InteractiveLearningType;
-  note: string;
+  question?: string;
+  displayQuestion: InteractiveLearningType;
+  answer: string;
   hint: string;
+  note: string;
   timeout: number;
 };
