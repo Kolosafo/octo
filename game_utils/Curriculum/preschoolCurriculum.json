@@ -1,0 +1,60 @@
+[
+  {
+    "id": 1,
+    "name": "Numbers in Our World",
+    "detail": "Counting objects 1-10",
+    "activities": [
+      "Counting everyday objects (toys, fruits) using songs and fingerplays",
+      "Matching numerals (1-5) with corresponding quantities of objects",
+      "Sorting objects by size (big/small) or color"
+    ],
+    "gameTypes": [
+      "Interactive games: Matching games with numbers and objects, popping balloons with numbers"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Shapes Everywhere",
+    "detail": "Recognizing and naming basic shapes (circle, square, triangle, rectangle)",
+    "activities": [
+      "Identifying basic shapes (circle, square, triangle, rectangle) in the real world (e.g., ball, book, slice of pizza)",
+      "Sorting and classifying shapes based on their properties (color, size)"
+    ],
+    "gameTypes": [
+      "Interactive games: Shape puzzles, matching shapes with objects"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "A Colorful World",
+    "detail": "Identifying and comparing colors",
+    "activities": [
+      "Learning and identifying basic colors (red, yellow, blue, green)",
+      "Sorting objects based on color",
+      "Matching colored objects or shapes"
+    ],
+    "gameTypes": ["Interactive games: Color mixing games"]
+  },
+  {
+    "id": 4,
+    "name": "Sharing and Adding Up",
+    "detail": "Understanding basic addition",
+    "activities": [
+      "Word problems with simple addition scenarios (e.g., 'We have 2 apples + 1 apple. How many apples do we have now?')"
+    ],
+    "gameTypes": [
+      "Interactive games: Drag-and-drop addition activities, matching"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Taking Away",
+    "detail": "Understanding basic subtraction",
+    "activities": [
+      "Word problems with simple subtraction scenarios (e.g., 'We had 3 candies, we ate 1. How many candies are left?')"
+    ],
+    "gameTypes": [
+      "Interactive games: Drag-and-drop subtraction activities, matching"
+    ]
+  }
+]
