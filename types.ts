@@ -74,3 +74,11 @@ export type DragandDropType = {
   draggableItems: DraggableItemType[];
   droppableItems: DroppableItemType[];
 };
+
+//// PAINT TYPES
+export type PaintType = {
+  instruction: string;
+  colors: string[];
+  objectSrc: string;
+  selectedColor: string;
+};
