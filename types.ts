@@ -1,3 +1,5 @@
+//// TODO: GRID TYPES
+
 export type GridBoxType = {
   id: string;
   index: number;
@@ -13,10 +15,21 @@ export type GridType = {
   length: number;
   boxes: GridBoxType[];
 };
+export type AiGridResponseType = {
+  question: string;
+  displayQuestion: GridType;
+  answer: string;
+  hint: string;
+  note: string;
+  timeout: number;
+};
 
 export type StudentResponseType = {
   responseType: "text" | "voice";
 };
+
+//// TODO: INTERACTIVE LEARNING TYPES
+
 export type InteractiveLearningImageType = {
   src: string;
   name: string;
@@ -30,15 +43,6 @@ export type InteractiveLearningType = {
   studentResponse: StudentResponseType[] | null;
 };
 
-export type AiGridResponseType = {
-  question: string;
-  displayQuestion: GridType;
-  answer: string;
-  hint: string;
-  note: string;
-  timeout: number;
-};
-
 export type AiInteractiveLearningResponseType = {
   question?: string;
   displayQuestion: InteractiveLearningType;
@@ -46,4 +50,27 @@ export type AiInteractiveLearningResponseType = {
   hint: string;
   note: string;
   timeout: number;
+};
+
+//// TODO: DRAG AND DROP TYPES
+
+export type DraggableItemType = {
+  name: string;
+  src: string;
+};
+
+export type DroppableItemType = {
+  id: number;
+  label: string;
+  answer: string;
+  insertedAnswer: string;
+  answerImg: string;
+  feedback: string;
+};
+export type DragandDropType = {
+  instruction: string;
+  id: string;
+  length: number;
+  draggableItems: DraggableItemType[];
+  droppableItems: DroppableItemType[];
 };
