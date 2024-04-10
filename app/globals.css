@@ -6,6 +6,7 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --duration: 2s;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -33,7 +34,6 @@ p {
   color: #4a4e74;
 }
 
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -52,5 +52,20 @@ p {
   }
   .die-face {
     box-shadow: 0px 3.57447px 3.57447px rgba(0, 0, 0, 0.1);
+  }
+
+  .baloon {
+    animation: slide ease-in-out forwards;
+  }
+}
+
+@keyframes slide {
+  0% {
+    transform: translateY(200rem);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
