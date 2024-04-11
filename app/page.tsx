@@ -1,6 +1,14 @@
 import Image from "next/image";
+import LineChart from "./_components/LineChart";
+import BarChart from "./_components/BarChart";
+import PieChart from "./_components/PieChart";
 
 export default function Home() {
+  // const subjects = [
+  //   { subject: 'Calculus', correct: 70, wrong: 30 },
+  //   { subject: 'Algebra', correct: 85, wrong: 15 },
+  //   { subject: 'Geometry', correct: 60, wrong: 40 },
+  //  ];
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
@@ -108,6 +116,11 @@ export default function Home() {
           </p>
         </a>
       </div>
+      {/* <div>
+        <LineChart/>
+        <BarChart data={subjects}/>
+        <PieChart data={subjects}/>
+      </div> */}
     </main>
   );
 }

@@ -35,3 +35,10 @@ body {
     align-items: center;
   }
 }
+#lineChart {
+  max-width: 80%;
+  height: 100vh;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
