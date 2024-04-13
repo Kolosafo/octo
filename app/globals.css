@@ -6,6 +6,7 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --duration: 2s;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -26,13 +27,46 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+p {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  margin-top: 0;
+  color: #4a4e74;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+
   .fullCenter {
     justify-content: center;
     align-items: center;
+  }
+
+  .roll-dice {
+    box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.18);
+  }
+  .roll-dice:active {
+    box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
+  }
+  .die-face {
+    box-shadow: 0px 3.57447px 3.57447px rgba(0, 0, 0, 0.1);
+  }
+
+  .baloon {
+    animation: slide ease-in-out forwards;
+  }
+}
+
+@keyframes slide {
+  0% {
+    transform: translateY(200rem);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 #lineChart {
