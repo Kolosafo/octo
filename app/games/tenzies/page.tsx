@@ -16,8 +16,8 @@ export default function Tenzies() {
 
   useEffect(() => {
     const firstValue = dice[0].value;
-    //  .every() checks for a specific condition,  and if every
-    // item in the array is  true to the condition it will return true
+    // .every() checks for a specific condition, and if every item 
+    // in the array is true to the condition it will return true
     const allHeld = dice.every((die: Die) => die.held);
     const allSameNumber = dice.every((die: Die) => die.value === firstValue);
     if (allHeld && allSameNumber) {
@@ -71,18 +71,19 @@ export default function Tenzies() {
 
   return (
     <div className='grid place-content-center text-center w-full min-h-screen font-bold p-5'>
-      <div className='h-[31.25rem] w-[31.25rem] max-w-screen-md bg-[#F5F5F5] p-2.5 mx-auto rounded-md flex flex-col justify-evenly items-center'>
+      <div className='min-h-[31.25rem] max-w-[31.25rem] bg-[#F5F5F5] p-4 mx-auto rounded-md flex flex-col gap-4 justify-evenly items-center'>
         {tenzies && <Confetti />}
         <h1 className='text-4xl m-0 text-[#342d58]'>Tenzies</h1>
         <p className='text-[#4A4E74] px-14'>
           Roll until all dice are the same. Click each die to freeze it at its
           current value between rolls.
         </p>
-        <div className='grid gap-5 mb-10 grid-rows-[auto_auto] grid-cols-5'>
+        <div className='max-w-[350px] mx-auto grid gap-5 mb-5 grid-cols-[repeat(auto-fit,_minmax(3.125rem,_1fr))]'>
           {diceElements}
         </div>
         <button
-          className='outline-dashed outline-offset-2 focus-visible:outline-1 focus-visible:outline-[#5035FF] min-w-[100px] py-4 px-2.5 font-semibold text-sm tracking-widest rounded-md bg-[#5035FF] text-white'
+          type='button'
+          className='roll-dice min-w-[100px] p-3 font-semibold text-sm tracking-widest rounded-md bg-[#5035FF] text-white focus-visible:outline-dashed outline-offset-2 focus-visible:outline-1 focus-visible:outline-[#5035FF]'
           onClick={rollUnheldDice}
         >
           {tenzies ? 'Reset Game' : 'Roll'}
