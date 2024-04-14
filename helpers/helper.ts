@@ -1,6 +1,6 @@
-import { GeneralCurriculumType, SingleLessonType } from "@/types";
+import { GeneralCurriculumType, SubjectLessonType } from "@/types";
 
-export function getLessonCompletionPercentage(lessons: SingleLessonType[]) {
+export function getLessonCompletionPercentage(lessons: SubjectLessonType[]) {
   const totalLessons = lessons.length;
 
   // Count the number of completed lessons
