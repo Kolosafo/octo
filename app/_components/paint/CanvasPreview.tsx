@@ -11,6 +11,7 @@ export default function CanvasPreview({
   colors,
   imgSrc,
   instruction,
+  answer,
 }: any) {
   const width = thickness;
   const widthHalf = width ? width / 2 : 0;
@@ -20,9 +21,15 @@ export default function CanvasPreview({
   useEffect(() => {
     init();
   }, []);
+
   return (
     <section className="p-6 w-full flex flex-col h-screen">
-      <span>Instruction: {instruction}</span>
+      <span>
+        Instruction:{" "}
+        <span className="font-bold" style={{ color: answer }}>
+          {instruction}
+        </span>{" "}
+      </span>
       <div className="h-[80%] w-full relative flex justify-center items-center">
         <Image
           src={imgSrc}
@@ -39,7 +46,11 @@ export default function CanvasPreview({
       </div>
 
       <div className="border-2 border-neutral-600 py-2 z-20">
-        <Colors colors={colors} handleSetColor={handleColor} />
+        <Colors
+          correctColor={answer}
+          colors={colors}
+          handleSetColor={handleColor}
+        />
       </div>
     </section>
   );

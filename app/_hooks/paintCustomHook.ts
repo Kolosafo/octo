@@ -25,8 +25,7 @@ const usePaintCustomHook = () => {
   };
 
   const handleMouseDown = (e: any) => {
-    console.log(ctx, canvasRef);
-
+    console.log("drawing in progress: ", ctx, canvasRef);
     drawingInProgress.current = true;
     [lastX.current, lastY.current] = [e.offsetX, e.offsetY];
   };
