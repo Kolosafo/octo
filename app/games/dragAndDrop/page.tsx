@@ -5,16 +5,35 @@ import { dummyDragdDrop } from "@/game_utils/dragAndDrop/dummyData";
 import { DragandDropType, DroppableItemType } from "@/types";
 import { DndContext } from "@dnd-kit/core";
 import Image from "next/image";
-import React, { useState } from "react";
-
+import React, { useEffect, useState } from "react";
 
 const Page = () => {
+  const [matchedItems, setMatchedItems] = useState(0);
+//   const [gameOver, setGameOver] = useState<>({ gameWon: false });
+  const [feedback, setFeedback] = useState({ text: "", positive: false });
   const [answerDropBoxes, setAnswerDropBoxes] = useState<
     DroppableItemType[] | null
   >(dummyDragdDrop.droppableItems);
 
   const [dragAndDropItems, setDragAndDropItems] =
     useState<DragandDropType | null>(dummyDragdDrop);
+
+  const handleCheckMatch = (answer: string, insertedAnswer: string) => {
+    if (insertedAnswer === answer) {
+      setFeedback({ text: "Correct! Great job.", positive: true });
+    } else {
+      setFeedback({ text: "Oops! You were close. Try again", positive: false });
+    }
+    setTimeout(() => {
+      setFeedback({ text: "", positive: false });
+    }, 2000);
+  };
+
+  useEffect(() => {
+    if (matchedItems === dragAndDropItems?.length) {
+    //   setGameOver(true);
+    }
+  }, []);
 
   const AnswerImagesArray: any =
     dragAndDropItems &&
@@ -31,7 +50,16 @@ const Page = () => {
     ));
   return (
     <div className="flex flex-col justify-around gap-10 w-full py-10">
-      <span></span>
+      <span>{dragAndDropItems?.instruction}</span>
+      {feedback.text && (
+        <span
+          className={`${
+            feedback.positive ? "text-green-600" : "text-rose-600"
+          } font-semibold`}
+        >
+          {feedback.text}
+        </span>
+      )}
       <DndContext onDragEnd={handleDragEnd}>
         <div className="flex w-full gap-10">
           {answerDropBoxes &&
@@ -80,6 +108,10 @@ const Page = () => {
         },
         ...answerDropBoxes.slice(updateObjectIndex + 1),
       ];
+      handleCheckMatch(
+        answerDropBoxes[updateObjectIndex].answer,
+        event.active.data.current.value
+      );
       setAnswerDropBoxes(updatedArray);
     }
     // console.log("NEW ARRAY: ", updateObjectIndex);

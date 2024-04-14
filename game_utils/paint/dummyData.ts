@@ -5,4 +5,5 @@ export const dummyPaintData: PaintType = {
   colors: ["red", "yellow", "purple"],
   objectSrc: "/img/box.png",
   selectedColor: "purple",
+  answer: "red",
 };

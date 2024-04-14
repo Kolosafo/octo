@@ -19,6 +19,7 @@ const Page = () => {
         colors={dummyPaintData.colors}
         imgSrc={dummyPaintData.objectSrc}
         instruction={dummyPaintData.instruction}
+        answer={dummyPaintData.answer}
       />
     </div>
   );
