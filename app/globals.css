@@ -3,35 +3,18 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-  --duration: 2s;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+  --violet: hsl(313 29% 42%);
+  --white: hsl(0 0% 100%);
+  --peach: hsl(358 98% 83%);
+  --gold: hsl(55 66% 69%);
+  --darkPeach: hsl(357 96% 79%);
+  --altTxt: hsl(234 22% 37%);
+  --background: hsl(0, 0%, 96%);
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-p {
-  font-family: 'Inter', sans-serif;
-  font-weight: 400;
-  margin-top: 0;
-  color: #4a4e74;
+  background-color: var(--background);
+  color: var(--altTxt);
 }
 
 @layer utilities {
@@ -72,7 +55,7 @@ p {
 #lineChart {
   max-width: 80%;
   height: 100vh;
-    height: auto;
-    margin: 0 auto;
-    display: block;
+  height: auto;
+  margin: 0 auto;
+  display: block;
 }

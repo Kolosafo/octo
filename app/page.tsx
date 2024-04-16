@@ -1,53 +1,37 @@
-"use client";
-import useSpeechCognition from "./_hooks/useSpeechRecognition";
+import Link from 'next/link';
+import Image from 'next/image';
+import { BsArrowRight } from 'react-icons/bs';
+import octo from '../public/octo.svg';
 
-export default function Home() {
-  const {
-    text,
-    startListening,
-    stopListening,
-    isListening,
-    hasRecognitionSupport,
-  } = useSpeechCognition();
+export default function Page() {
   return (
-    <main>
-      <h1>Supercharge your learning with Gemina.</h1>
-      {hasRecognitionSupport ? (
-        <>
-          <div>
-            <button
-              className="p-1 bg-gray-600 rounded-md"
-              onClick={startListening}
-            >
-              Start Listening
-            </button>
-          </div>
-          <div>
-            {isListening ? (
-              <div className="flex flex-col">
-                <span>Listening...</span>
-                <button
-                  className="p-1 bg-gray-600 rounded-md"
-                  onClick={stopListening}
-                >
-                  Stop Listening
-                </button>
-              </div>
-            ) : null}
-          </div>
-          <span className="text-2xl">{text}</span>
-        </>
-      ) : (
-        <span> Your browser has no speech recognition support</span>
-      )}
-
-      {/* <div>
-        <h2>What is Gemina?</h2>
-        <p>
-          Gemina is a platform that helps you learn more effectively by
-          combining spaced repetition with the power of interactive games.
+    <section className='min-h-[85vh] grid place-content-center md:grid-cols-2 gap-4 lg:px-24'>
+      <div className='flex flex-col gap-6 lg:gap-10 justify-center  h-full'>
+        <h1 className='text-3xl lg:text-7xl font-bold mt-3'>Octo The smart learning AI tutor</h1>
+        <p className='text-xl lg:text-2xl max-w-[900px]'>
+          Supercharge your kids learning with Octo the personal AI tutor
+          designed to make learning as fun as possible.
         </p>
-      </div> */}
-    </main>
+        <div className='flex gap-8'>
+          <Link
+            href='/home'
+            className='w-fit p-2 flex items-center justify-center font-semibold rounded-md gap-2 border-2 border-main hover:bg-main/10 outline-none min-w-[8rem] focus-visible:gap-4 focus-visible:bg-main/10 transition-all duration-300'
+          >
+            Class
+            <BsArrowRight aria-hidden='true' />
+          </Link>
+          <Link
+            href='/auth/sign-up'
+            className='w-fit p-2 flex items-center justify-center font-semibold rounded-md gap-2 border-2 border-main hover:bg-main/10 outline-none min-w-[8rem] focus-visible:gap-4 focus-visible:bg-main/10 transition-all duration-300'
+          >
+            Enroll
+            <BsArrowRight aria-hidden='true' />
+          </Link>
+        </div>
+      </div>
+      <div>
+        <Image src={octo} alt='' width={500} height={500} />
+      </div>
+    </section>
   );
 }
