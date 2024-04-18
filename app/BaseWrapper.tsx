@@ -1,5 +1,5 @@
-import { ReduxProvider } from "@/redux/provider";
-import React from "react";
+import { ReduxProvider } from '@/redux/provider';
+import React from 'react';
 
 const BaseAppWrapper = ({
   children,
@@ -9,10 +9,10 @@ const BaseAppWrapper = ({
   fontFamily: any;
 }) => {
   return (
-    <html lang="en">
+    <html lang='en'>
       <ReduxProvider>
         <body className={fontFamily}>
-          <main className="min-h-screen max-w-[90rem] mx-auto p-10">
+          <main className='min-h-screen max-w-[90rem] mx-auto relative'>
             {children}
           </main>
         </body>

@@ -7,7 +7,7 @@ export default function Page() {
   return (
     <section className='min-h-[85vh] grid place-content-center md:grid-cols-2 gap-4 lg:px-24'>
       <div className='flex flex-col gap-6 lg:gap-10 justify-center  h-full'>
-        <h1 className='text-3xl lg:text-7xl font-bold mt-3'>Octo The smart learning AI tutor</h1>
+        <h1 className='text-3xl lg:text-7xl font-bold mt-3'>Octo <span className='text-accent'>The smart learning</span> AI tutor</h1>
         <p className='text-xl lg:text-2xl max-w-[900px]'>
           Supercharge your kids learning with Octo the personal AI tutor
           designed to make learning as fun as possible.
