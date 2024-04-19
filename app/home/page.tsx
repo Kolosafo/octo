@@ -1,5 +1,5 @@
-"use client";
-import useSpeechCognition from "../_hooks/useSpeechRecognition";
+'use client';
+import useSpeechCognition from '../_hooks/useSpeechRecognition';
 
 export default function Home() {
   const {
@@ -11,7 +11,7 @@ export default function Home() {
   } = useSpeechCognition();
   return (
     <>
-      {hasRecognitionSupport ? (
+      {/* {hasRecognitionSupport ? (
         <>
           <div>
             <button
@@ -38,15 +38,16 @@ export default function Home() {
         </>
       ) : (
         <span> Your browser has no speech recognition support</span>
-      )}
+      )} */}
 
-      {/* <div>
-        <h2>What is Gemina?</h2>
-        <p>
-          Gemina is a platform that helps you learn more effectively by
-          combining spaced repetition with the power of interactive games.
-        </p>
-      </div> */}
+      <section className='min-h-[85vh] bg-main'>
+        <div className='min-h-[30vh] flex items-center justify-center p-5'>
+          <h1 className='text-mainTxt text-2xl lg:text-4xl font-bold text-center'>Ready to <span className='text-accent'>learn?</span></h1>
+        </div>
+          <div className='z-10 py-6 lg:px-24 bg-white min-h-screen rounded-t-3xl lg:rounded-t-[5rem]'>
+
+          </div>
+      </section>
     </>
   );
 }
