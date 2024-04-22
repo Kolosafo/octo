@@ -55,8 +55,8 @@ const Page = ({ params }: { params: { subject: string } }) => {
     <>
       <section className='relative min-h-[85vh] gradient'>
         <div className='sticky top-0 min-h-[30vh] flex flex-col items-center justify-center p-5'>
-          <h1 className=' text-mainTxt text-2xl lg:text-4xl font-bold text-center'>
-            Mathematics {/* should be dynamic */}
+          <h1 className='capitalize text-mainTxt text-2xl lg:text-4xl font-bold text-center'>
+            {params.subject}
           </h1>
           <p className='font-semibold'>{decodeSubject}</p>
         </div>
