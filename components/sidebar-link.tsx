@@ -22,7 +22,7 @@ function SidebarLink(props: SidebarLinkProps) {
       >
         {props.icon}
         <span
-          className={`whitespace-nowrap overflow-hidden transition-all duration-300 ${
+          className={`whitespace-nowrap overflow-hidden transition-all ${
             props.expanded ? 'ml-4' : 'w-0 ml-0'
           }`}
         >

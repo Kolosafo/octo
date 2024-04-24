@@ -25,7 +25,7 @@ const Page = () => {
   const runKyc = (e: React.FormEvent) => {
     e.preventDefault();
   };
-
+ 
   return (
     <section className='gradient min-h-[85vh]'>
       <div className='sticky top-0 min-h-[30vh] flex items-center justify-center gap-2 p-5'>
