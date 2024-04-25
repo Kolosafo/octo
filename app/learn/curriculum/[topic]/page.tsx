@@ -1,27 +1,28 @@
-"use client";
+'use client';
 
-import React from "react";
-import LessonList from "@/app/_components/Lesson/LessonList";
-import { useSelector } from "react-redux";
-import { IRootState } from "@/redux/store";
+import React from 'react';
+import LessonList from '@/app/_components/Lesson/LessonList';
+import { useSelector } from 'react-redux';
+import { IRootState } from '@/redux/store';
 const Curriculum = ({ params }: { params: { topic: string } }) => {
   const { curriculum } = useSelector((store: IRootState) => store.lesson);
   const decodeSubject = decodeURIComponent(params.topic);
 
   return (
-    <div className="flex flex-col">
-      <div className="relative violet-bg px-16 pt-20 pb-6 -mb-5">
-        <span className="text-7xl font-bold text-white capitalize">
+    <section className='relative min-h-screen gradient'>
+      <div className='sticky top-0 min-h-[30vh] flex items-center justify-center p-5'>
+        <h1 className=' text-mainTxt text-2xl lg:text-4xl font-bold text-center'>
           {decodeSubject}
-        </span>
+        </h1>
       </div>
-      <div className="h-full w-full rounded-t-3xl border-black flex flex-col gap-8 z-10 p-10 bg-white min-h-full">
-        <div className="flex items-center h-full justify-center gap-2"></div>
-        {curriculum?.curriculum.map((item, index) => (
-          <LessonList key={index} {...item} />
-        ))}
+      <div className='relative p-6 bg-mainBg min-h-[70vh]'>
+        <div className='py-10 gap-8 flex flex-col max-w-screen-lg mx-auto'>
+          {curriculum?.curriculum.map((item, index) => (
+            <LessonList key={index} {...item} />
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

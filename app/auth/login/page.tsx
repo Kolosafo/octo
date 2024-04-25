@@ -32,7 +32,7 @@ function Login() {
                   <button
                     type='button'
                     onClick={SignInWithGoogle}
-                    className='bg-main text-mainTxt flex items-center gap-4 p-3 rounded-md border-2 border-transparent hover:bg-main/20 hover:border-main hover:border-2 hover:text-main transition duration-300'
+                    className='text-main flex items-center gap-4 p-3 rounded-md border-2 border-main hover:bg-main/20 focus-visible:bg-main/20 focus-visible:border-dotted outline-none transition duration-300'
                   >
                     <Image src={googleLogo} alt='google' width={24} height={24} />
                     <span className='text-darkTxt dark:text-lightTxt'>
@@ -42,7 +42,7 @@ function Login() {
                   <button
                     type='button'
                     onClick={SignUpWithGoogle}
-                    className='bg-main text-mainTxt flex items-center gap-4 p-3 rounded-md border-2 border-transparent hover:bg-main/20 hover:border-main hover:border-2 hover:text-main transition duration-300'
+                    className='text-main flex items-center gap-4 p-3 rounded-md border-2 border-main hover:bg-main/20 focus-visible:bg-main/20 focus-visible:border-dotted outline-none transition duration-300'
                   >
                     <Image src={googleLogo} alt='google' width={24} height={24} />
                     <span className='text-darkTxt dark:text-lightTxt'>
