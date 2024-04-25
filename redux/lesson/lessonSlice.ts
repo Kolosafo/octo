@@ -1,4 +1,3 @@
-import { handleUpdateLessonComplete } from "@/helpers/helper";
 import { GeneralLesson } from "@/mockups/dummyLesson";
 import { GeneralCurriculum } from "@/mockups/generalCurriculum";
 import { GeneralCurriculumType, LessonObjectType } from "@/types";

@@ -1,9 +1,11 @@
 import { LessonObjectType } from "@/types";
 
 export const GeneralLesson: LessonObjectType = {
-  sectionLessonId: 2,
-  sectionId: 1,
-  lessonObj: [
+  subject: "Calculus",
+  lessonTitle: "What is calculus?",
+  lessonSlug: "what-is-calculus",
+  lessonId: 2,
+  lessonDetails: [
     {
       id: 1,
       title: "Here you will learn about the intro to calculus",

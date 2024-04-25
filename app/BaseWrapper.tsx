@@ -12,9 +12,9 @@ const BaseAppWrapper = ({
     <html lang="en">
       <ReduxProvider>
         <body className={fontFamily}>
-          <main className="min-h-screen max-w-[90rem] mx-auto p-10">
-            {children}
-          </main>
+          {/* <main className="min-h-screen max-w-[90rem] mx-auto p-10"> */}
+          {children}
+          {/* </main> */}
         </body>
       </ReduxProvider>
     </html>

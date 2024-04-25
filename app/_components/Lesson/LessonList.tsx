@@ -1,21 +1,23 @@
 "use client";
 import { FaCheckCircle, FaPlayCircle } from "react-icons/fa";
 import { getLessonCompletionPercentage } from "@/helpers/helper";
-import { GenCurriculumListType } from "@/types";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import {
   IoIosArrowDropdownCircle,
   IoIosArrowDropupCircle,
 } from "react-icons/io";
+import { GenCurriculumListType, SubjectLessonType } from "@/types";
 
 const LessonList = ({
   sectionTitle,
   lessons,
-  exercise,
-  learningType,
-  isSelectionCompleted,
-}: GenCurriculumListType) => {
+  lastLessonLearnt,
+}: {
+  sectionTitle: string;
+  lessons: SubjectLessonType[];
+  lastLessonLearnt: string;
+}) => {
   const router = useRouter();
   const [open, setOpen] = useState(false);
 
@@ -56,7 +58,9 @@ const LessonList = ({
                       <div className="flex items-center gap-3">
                         <FaPlayCircle
                           onClick={() => {
-                            router.push(`/learning/${lesson.title}`);
+                            router.push(
+                              `/learn/${lesson.title}/${sectionTitle}/${lastLessonLearnt}`
+                            );
                           }}
                           size={25}
                           className="cursor-pointer"

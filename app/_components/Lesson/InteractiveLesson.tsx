@@ -3,6 +3,7 @@ import { GeneralInteractiveLessonType } from "@/types";
 import Image from "next/image";
 import React, { useState } from "react";
 import AnswerOption from "../AnswerOption";
+import parse from "html-react-parser";
 
 const InteractiveLesson = ({
   props,
@@ -36,6 +37,14 @@ const InteractiveLesson = ({
       }, 3000);
     }
   };
+
+  const clearCheckAnswer = () => {
+    setIsAnswerCorrect({
+      isCorrect: false,
+      feedback: "",
+    });
+    setSelectedOption(null);
+  };
   return props.type === "lesson" ? (
     <div className="flex-col flex py-10 px-10">
       {props.image && (
@@ -49,7 +58,7 @@ const InteractiveLesson = ({
           />
         </div>
       )}
-      <span>{props.details}</span>
+      <div>{parse(props.details)}</div>
       <button
         onClick={() => handleIsComplete(props.id)}
         className="px-4 py-2 rounded-md bg-orange-600"
@@ -59,8 +68,9 @@ const InteractiveLesson = ({
     </div>
   ) : (
     <div className="flex-col flex py-10 px-10">
+      <div>{parse(props.details)}</div>
       <span className="text-rose-400">{isAnswerCurrent.feedback}</span>
-      <span>{props.question}</span>
+      <div>{parse(props.question ? props.question : "")}</div>
       {props.answerType === "options" && props.options ? (
         <AnswerOption
           handleChange={handleChange}
@@ -72,7 +82,10 @@ const InteractiveLesson = ({
         ""
       )}
       <button
-        onClick={() => handleIsComplete(props.id)}
+        onClick={() => {
+          handleIsComplete(props.id);
+          clearCheckAnswer();
+        }}
         className="px-4 py-2 rounded-md bg-orange-600"
         disabled={props.type === "quiz" && !isAnswerCurrent.isCorrect}
       >

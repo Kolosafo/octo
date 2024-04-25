@@ -1,0 +1,64 @@
+[
+  {
+    "topic": "Algebra 1",
+    "subtopics": [
+      "Real Numbers and Expressions: Simplifying expressions, operations with exponents and radicals, absolute values, inequalities",
+      "Linear Equations and Inequalities: Solving linear equations and inequalities in one and two variables, systems of linear equations",
+      "Functions: Introduction to functions, notation, domain and range, linear functions, graphing functions",
+      "Polynomials: Operations on polynomials, factoring polynomials, quadratic expressions and equations",
+      "Exponential and Logarithmic Functions: Introduction to exponential and logarithmic functions, properties and graphs"
+    ]
+  },
+  {
+    "topic": "Geometry",
+    "subtopics": [
+      "Points, Lines, and Angles: Properties of geometric figures, proofs, congruence, similarity",
+      "Triangles: Classifying triangles, Pythagorean Theorem, trigonometric ratios (sine, cosine, tangent)",
+      "Polygons and Circles: Properties of polygons and circles, area and perimeter calculations",
+      "Constructions: Geometric constructions using compass and straightedge",
+      "Coordinate Geometry: Introduction to coordinate plane, graphing lines and circles using equations"
+    ]
+  },
+  {
+    "topic": "Algebra 2 (or Pre-calculus)",
+    "subtopics": [
+      "Functions and Relations: Advanced function topics (composite, inverse), inequalities, graphing",
+      "Polynomial and Rational Functions: Operations on polynomial and rational functions, zeros and rational expressions",
+      "Exponential and Logarithmic Functions: Advanced properties and applications of exponential and logarithmic functions",
+      "Matrices and Determinants: Introduction to matrices, operations, determinants",
+      "Sequences and Series: Arithmetic and geometric sequences, series convergence"
+    ]
+  },
+  {
+    "topic": "Trigonometry (may be integrated into Algebra 2)",
+    "subtopics": [
+      "Trigonometric Identities: Proving and using trigonometric identities",
+      "Trigonometric Functions: Graphs of trigonometric functions (sine, cosine, tangent), applications in right triangle trigonometry",
+      "Trigonometric Applications: Solving trigonometric equations, applications in complex number systems (may vary)"
+    ]
+  },
+  {
+    "topic": "Calculus (AP Calculus or equivalent)",
+    "subtopics": [
+      "Limits and Continuity: Understanding limits, differentiation rules, applications of derivatives (optimization, related rates)",
+      "Integration: Introduction to indefinite and definite integrals, applications of integration (finding areas, volumes)"
+    ]
+  },
+  {
+    "topic": "Statistics and Probability",
+    "subtopics": [
+      "Data Analysis: Summarizing and interpreting data, measures of central tendency and dispersion",
+      "Probability: Calculating probabilities, conditional probability, Bayes' theorem",
+      "Statistical Distributions: Introduction to normal distribution, hypothesis testing, confidence intervals"
+    ]
+  },
+  {
+    "topic": "Elective Courses",
+    "subtopics": [
+      "Discrete Mathematics: Logic, set theory, graph theory",
+      "Linear Algebra: Advanced study of matrices, vector spaces, linear transformations",
+      "Calculus Applications: Applications of calculus in physics, engineering, economics",
+      "Probability and Statistics (advanced): Advanced statistical concepts, hypothesis testing, regression analysis"
+    ]
+  }
+]

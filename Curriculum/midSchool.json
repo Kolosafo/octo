@@ -1,0 +1,52 @@
+[
+  {
+    "topic": "Number and Operations",
+    "subtopics": [
+      "Number Systems: Whole numbers, integers, fractions, decimals, percentages",
+      "Operations: Addition, subtraction, multiplication, division (whole numbers, fractions, decimals)",
+      "Order of Operations (PEMDAS/BODMAS)",
+      "Ratios and Proportions"
+    ]
+  },
+  {
+    "topic": "Algebra",
+    "subtopics": [
+      "Expressions and Equations: Simplifying expressions, solving linear equations with one variable",
+      "Inequalities: Representing and solving inequalities with one variable",
+      "Functions: Introduction to functions and input-output relationships"
+    ]
+  },
+  {
+    "topic": "Geometry",
+    "subtopics": [
+      "Points, Lines, and Angles: Properties, measurements (degrees)",
+      "Shapes and Polygons: Classification, angles, sides",
+      "Area and Volume: Basic shapes (rectangles, squares, triangles, circles), rectangular prisms",
+      "Symmetry and Transformations: Reflectional, rotational, translations, rotations"
+    ]
+  },
+  {
+    "topic": "Statistics and Probability",
+    "subtopics": [
+      "Data Collection and Analysis: Tables, graphs (bar charts, histograms), measures of central tendency (mean, median, mode)",
+      "Probability: Introduction to concepts (likely, unlikely, certain), basic calculations"
+    ]
+  },
+  {
+    "topic": "Measurement",
+    "subtopics": [
+      "Units and Conversions: Metric and customary units (length, weight, capacity, time)",
+      "Perimeter and Area: Various shapes",
+      "Volume: Basic shapes (rectangular prisms)"
+    ]
+  },
+  {
+    "topic": "Other Topics",
+    "subtopics": [
+      "Pre-algebra concepts (variables, simplifying expressions)",
+      "Logic and problem-solving strategies",
+      "Financial literacy basics (percentages, budgeting)",
+      "Geometry proofs (introduction)"
+    ]
+  }
+]

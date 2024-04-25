@@ -40,6 +40,29 @@ body {
   .baloon {
     animation: slide ease-in-out forwards;
   }
+  .light-peach-bg {
+    background-color: var(--peach);
+  }
+  .light-peach-text {
+    color: var(--peach);
+  }
+
+  .dark-peach-bg {
+    background-color: var(--darkPeach);
+  }
+  .dark-peach-text {
+    color: var(--darkPeach);
+  }
+
+  .violet-bg {
+    background-color: var(--violet);
+  }
+  .violet-text {
+    color: var(--violet);
+  }
+  .violet-border {
+    border-color: var(--violet);
+  }
 }
 
 @keyframes slide {
