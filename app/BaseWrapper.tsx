@@ -1,4 +1,3 @@
-import Sidebar from '@/components/sidebar';
 import { ReduxProvider } from '@/redux/provider';
 import React from 'react';
 
@@ -13,12 +12,7 @@ const BaseAppWrapper = ({
     <html lang='en'>
       <ReduxProvider>
         <body className={fontFamily}>
-          <div className='grid grid-cols-[auto_1fr]'>
-            <Sidebar />
-            <main className='relative min-h-screen w-full'>
-              {children}
-            </main>
-          </div>
+          <main className='relative min-h-screen w-full'>{children}</main>
         </body>
       </ReduxProvider>
     </html>

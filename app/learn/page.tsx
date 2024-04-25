@@ -20,6 +20,7 @@ const Page = () => {
       numOfLessons: 12,
     },
   ]);
+  
   return (
     <div className="w-full flex flex-col min-h-screen">
       <div className="relative violet-bg px-16 py-20 -mb-5">
