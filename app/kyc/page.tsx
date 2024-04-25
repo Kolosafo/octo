@@ -25,16 +25,17 @@ const Page = () => {
   const runKyc = (e: React.FormEvent) => {
     e.preventDefault();
   };
-
+ 
   return (
-    <section className='min-h-[85vh] bg-main'>
-      <div className='min-h-[30vh] flex items-center justify-center gap-2 p-5'>
-        <h1 className='text-mainTxt text-2xl lg:text-4xl font-bold text-center'>
-          I&apos;m <span className='text-accent'>Octo</span> and you are?
+    <section className='gradient min-h-[85vh]'>
+      <div className='sticky top-0 min-h-[30vh] flex items-center justify-center gap-2 p-5'>
+        <h1 className='text-mainTxt text-2xl lg:text-4xl font-bold'>
+          <span className='block'>Hello friend</span>
+          I&apos;m <span className='text-altTxt'>Octo</span> and you are?
         </h1>
         <Image src={octo} alt='' width={200} height={200} />
       </div>
-      <div className='z-10 py-6 lg:px-24 bg-accent min-h-screen rounded-t-3xl lg:rounded-t-[5rem]'>
+      <div className='relative z-10 py-6 lg:px-24 bg-white min-h-screen rounded-t-3xl'>
         <div className='w-full max-w-[500px] mx-auto p-10 flex flex-col gap-4 z-10 relative'>
           <form className='relative flex flex-col gap-6' onSubmit={runKyc}>
             {error && (

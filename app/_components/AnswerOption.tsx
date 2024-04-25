@@ -14,9 +14,9 @@ const AnswerOption = ({
   handleSubmit: () => void;
 }) => {
   return (
-    <form onSubmit={(e) => e.preventDefault()}>
+    <form onSubmit={(e) => e.preventDefault()} className="flex flex-col gap-4">
       {options.map((option) => (
-        <div key={option.id}>
+        <div key={option.id} className="flex gap-2">
           <input
             type="radio"
             id={option.id}
@@ -31,7 +31,7 @@ const AnswerOption = ({
       <button
         onClick={handleSubmit}
         type="submit"
-        className="bg-yellow-400 px-6 rounded-md"
+        className="bg-main yellow-400 py-2 px-4 text-white w-fit rounded-md"
       >
         Submit
       </button>
