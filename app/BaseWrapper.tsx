@@ -1,5 +1,6 @@
-import { ReduxProvider } from "@/redux/provider";
-import React from "react";
+import Sidebar from '@/components/sidebar';
+import { ReduxProvider } from '@/redux/provider';
+import React from 'react';
 
 const BaseAppWrapper = ({
   children,
@@ -9,12 +10,15 @@ const BaseAppWrapper = ({
   fontFamily: any;
 }) => {
   return (
-    <html lang="en">
+    <html lang='en'>
       <ReduxProvider>
         <body className={fontFamily}>
-          {/* <main className="min-h-screen max-w-[90rem] mx-auto p-10"> */}
-          {children}
-          {/* </main> */}
+          <div className='grid grid-cols-[auto_1fr]'>
+            <Sidebar />
+            <main className='relative min-h-screen w-full'>
+              {children}
+            </main>
+          </div>
         </body>
       </ReduxProvider>
     </html>

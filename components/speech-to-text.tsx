@@ -1,7 +1,7 @@
-"use client";
-import useSpeechCognition from "../_hooks/useSpeechRecognition";
+import React from 'react';
+import useSpeechCognition from '../app/_hooks/useSpeechRecognition';
 
-export default function Home() {
+function SpeechToText() {
   const {
     text,
     startListening,
@@ -9,13 +9,14 @@ export default function Home() {
     isListening,
     hasRecognitionSupport,
   } = useSpeechCognition();
+
   return (
-    <>
+    <div>
       {hasRecognitionSupport ? (
         <>
           <div>
             <button
-              className="p-1 bg-gray-600 rounded-md"
+              className='p-1 bg-gray-600 rounded-md'
               onClick={startListening}
             >
               Start Listening
@@ -23,10 +24,10 @@ export default function Home() {
           </div>
           <div>
             {isListening ? (
-              <div className="flex flex-col">
+              <div className='flex flex-col'>
                 <span>Listening...</span>
                 <button
-                  className="p-1 bg-gray-600 rounded-md"
+                  className='p-1 bg-gray-600 rounded-md'
                   onClick={stopListening}
                 >
                   Stop Listening
@@ -34,19 +35,13 @@ export default function Home() {
               </div>
             ) : null}
           </div>
-          <span className="text-2xl">{text}</span>
+          <span className='text-2xl'>{text}</span>
         </>
       ) : (
         <span> Your browser has no speech recognition support</span>
       )}
-
-      {/* <div>
-        <h2>What is Gemina?</h2>
-        <p>
-          Gemina is a platform that helps you learn more effectively by
-          combining spaced repetition with the power of interactive games.
-        </p>
-      </div> */}
-    </>
+    </div>
   );
 }
+
+export default SpeechToText;

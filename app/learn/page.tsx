@@ -2,8 +2,10 @@
 import React, { useState } from "react";
 import TopicCard, { TopicCardType } from "../_components/TopicCard";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const Page = () => {
+  const router = useRouter();
   const [learningTopics, setLearningTopics] = useState<TopicCardType[] | null>([
     {
       progressPercentage: 40,
@@ -34,7 +36,10 @@ const Page = () => {
         />
       </div>
       <div className="h-full w-full relative rounded-t-3xl flex flex-col gap-8 z-10 p-20 bg-white min-h-full">
-        <button className="px-5 font-bold py-1 bg-orange-500 absolute top-2 right-8 rounded-md">
+        <button
+          className="px-5 font-bold py-1 violet-bg absolute text-white top-2 right-8 rounded-md"
+          onClick={() => router.push("/new-course")}
+        >
           New
         </button>
         {!learningTopics || learningTopics.length === 0 ? (

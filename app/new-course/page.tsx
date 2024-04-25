@@ -1,12 +1,12 @@
 import React from "react";
 import SubjectSearchSelect from "../_components/subjectSearchSelect";
-import { SUBJECTS } from "@/mockups/subjects";
+import { SUBJECTS_LIST } from "@/mockups/subjects";
 
 const Page = () => {
   return (
     <div>
       <span>Select a subject</span>
-      <SubjectSearchSelect subjects={SUBJECTS} />
+      <SubjectSearchSelect subjects={SUBJECTS_LIST} />
     </div>
   );
 };

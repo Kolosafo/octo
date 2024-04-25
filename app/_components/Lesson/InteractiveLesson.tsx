@@ -4,6 +4,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import AnswerOption from "../AnswerOption";
 import parse from "html-react-parser";
+import { BiChevronRight } from "react-icons/bi";
 
 const InteractiveLesson = ({
   props,
@@ -46,7 +47,7 @@ const InteractiveLesson = ({
     setSelectedOption(null);
   };
   return props.type === "lesson" ? (
-    <div className="flex-col flex py-10 px-10">
+    <div className="flex-col gap-6 flex py-10 px-10">
       {props.image && (
         <div>
           <Image
@@ -61,16 +62,31 @@ const InteractiveLesson = ({
       <div>{parse(props.details)}</div>
       <button
         onClick={() => handleIsComplete(props.id)}
-        className="px-4 py-2 rounded-md bg-orange-600"
+        className="flex items-center justify-center gap-2 font-semibold text-white text-center text-light py-2 px-6 bg-main rounded-xl border-2 hover:text-main hover:bg-transparent border-main focus-visible:outline-2 focus-visible:bg-transparent focus-visible:text-main transition"
       >
         Next
+        <BiChevronRight size={20} />
       </button>
     </div>
   ) : (
-    <div className="flex-col flex py-10 px-10">
-      <div>{parse(props.details)}</div>
-      <span className="text-rose-400">{isAnswerCurrent.feedback}</span>
-      <div>{parse(props.question ? props.question : "")}</div>
+    <div className="flex-col gap-4 flex py-10 px-10">
+      <div
+        className={`p-8 text-white rounded-md flex items-center justify-center bg-main ${
+          isAnswerCurrent.feedback !== ""
+            ? isAnswerCurrent.isCorrect
+              ? "bg-green-500"
+              : "bg-red-500"
+            : ""
+        }`}
+      >
+        <span className="">
+          {isAnswerCurrent.feedback ||
+            "Waiting for your answer please take your time..."}
+        </span>
+      </div>
+      <div className="text-lg lg:text-xl py-4 border-b">
+        <p>{parse(props.question ? props.question : "")}</p>
+      </div>
       {props.answerType === "options" && props.options ? (
         <AnswerOption
           handleChange={handleChange}
@@ -86,10 +102,11 @@ const InteractiveLesson = ({
           handleIsComplete(props.id);
           clearCheckAnswer();
         }}
-        className="px-4 py-2 rounded-md bg-orange-600"
+        className="flex items-center justify-center gap-2 font-semibold text-white text-center text-light py-2 px-6 bg-main rounded-xl border-2 hover:text-main hover:bg-transparent border-main focus-visible:outline-2 focus-visible:bg-transparent focus-visible:text-main transition"
         disabled={props.type === "quiz" && !isAnswerCurrent.isCorrect}
       >
         Next
+        <BiChevronRight size={20} />
       </button>
     </div>
   );

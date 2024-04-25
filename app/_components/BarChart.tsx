@@ -3,7 +3,6 @@ import { useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
 const BarChart = ({ data }: any) => {
   const chartRef = useRef<any>(null);
-
   useEffect(() => {
     if (chartRef && chartRef.current) {
       const ctx = chartRef.current.getContext("2d");

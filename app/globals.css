@@ -3,13 +3,14 @@
 @tailwind utilities;
 
 :root {
-  --violet: hsl(313 29% 42%);
+  --violet: #8a4c7d;
   --white: hsl(0 0% 100%);
   --peach: hsl(358 98% 83%);
   --gold: hsl(55 66% 69%);
-  --darkPeach: hsl(357 96% 79%);
+  --darkPeach: rgb(253, 150, 155);
   --altTxt: hsl(234 22% 37%);
   --background: hsl(0, 0%, 96%);
+  --gradient: radial-gradient(circle, rgba(138,76,125,1) 35%, rgba(253,150,155,1) 100%);
 }
 
 body {
@@ -20,6 +21,10 @@ body {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .gradient{
+    background: var(--gradient);
   }
 
   .fullCenter {
@@ -81,4 +86,82 @@ body {
   height: auto;
   margin: 0 auto;
   display: block;
+}
+
+@layer components {
+  .loader {
+    width: 48px;
+    height: 48px;
+    margin: auto;
+    position: relative;
+  }
+
+  .loader:before {
+    content: '';
+    width: 48px;
+    height: 5px;
+    background: #f0808050;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    border-radius: 50%;
+    animation: shadow324 0.5s linear infinite;
+  }
+
+  .loader:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: #f08080;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 4px;
+    animation: jump7456 0.5s linear infinite;
+  }
+
+  @keyframes jump7456 {
+    15% {
+      border-bottom-right-radius: 3px;
+    }
+
+    25% {
+      transform: translateY(9px) rotate(22.5deg);
+    }
+
+    50% {
+      transform: translateY(18px) scale(1, 0.9) rotate(45deg);
+      border-bottom-right-radius: 40px;
+    }
+
+    75% {
+      transform: translateY(9px) rotate(67.5deg);
+    }
+
+    100% {
+      transform: translateY(0) rotate(90deg);
+    }
+  }
+
+  @keyframes shadow324 {
+    0%,
+    100% {
+      transform: scale(1, 1);
+    }
+
+    50% {
+      transform: scale(1.2, 1);
+    }
+  }
+
+  ::-webkit-scrollbar {
+    width: 0.525rem;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--altTxt);
+    border-radius: 100vh;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
 }
