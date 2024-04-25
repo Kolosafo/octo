@@ -1,5 +1,7 @@
 import { GeneralCurriculumType, SubjectLessonType } from "@/types";
 
+export const ROOT_ULR = "http://127.0.0.1:8000"
+
 export function getLessonCompletionPercentage(lessons: SubjectLessonType[]) {
   const totalLessons = lessons.length;
 
@@ -14,13 +16,5 @@ export function getLessonCompletionPercentage(lessons: SubjectLessonType[]) {
   return `${percentage.toFixed(0)}% completed`;
 }
 
-export function handleUpdateLessonComplete(
-  curriculumIndex: number,
-  lessonIndex: number,
-  curriculum: GeneralCurriculumType
-) {
-  curriculum.curriculum[curriculumIndex].lessons[
-    lessonIndex
-  ].isLessonCompleted = true;
-  return curriculum;
-}
+
+

@@ -6,14 +6,25 @@ export type USER = {
   id: string | number;
   firstName: string;
   lastName: string;
-  dob: string;
+  email: string;
+  dob: string | null;
+  profile_picture: string | null;
+  country: string | null;
+  educationLevel: "pre school" | "middle school" | "high school" | null;
+  gradeLevel: string | null;
+};
+
+export type BackendUserType = {
+  id: string | number;
+  email: string;
+  first_name: string;
+  profile_picture: string;
+  last_name: string;
+  gender: string;
+  DOB: string;
+  school_level: "pre school" | "middle school" | "high school";
+  grade_level: string;
   country: string;
-  city: string;
-  educationLevel: "pre school" | "middle school" | "high school";
-  gradeLevel: string;
-  preferredLearningStyle: "visual" | "reading" | "hands-on";
-  specificConceptsLeaned: string[] | null;
-  strengthAndWeaknesses: string[] | null;
 };
 //// TODO: GRID TYPES
 
@@ -133,21 +144,23 @@ export type GenCurriculumListType = {
   sectionId: number | string;
   sectionTitle: string;
   lessons: SubjectLessonType[];
-  exercise: string;
+  exercise?: string;
   learningType: string;
-  isSelectionCompleted: boolean;
+  isSectionCompleted: boolean;
 };
 export type GeneralCurriculumType = {
   userId: number | string;
   subject: string;
   curriculum: GenCurriculumListType[];
-  isCompleted: boolean;
+  isSubjectCompleted: boolean;
 };
 
 export type SubjectLessonType = {
+  id: string | number;
   title: string;
   isLessonCompleted: boolean;
-  id: string | number;
+  exercise?: string;
+  learningType?: "text" | "auditory" | "interactive";
 };
 
 /// GENERAL INTERACTIVE LESSON
@@ -168,7 +181,28 @@ export type GeneralInteractiveLessonType = {
 };
 
 export type LessonObjectType = {
-  sectionId: string | number;
-  sectionLessonId: string | number;
-  lessonObj: GeneralInteractiveLessonType[];
+  subject: string;
+  lessonTitle: string;
+  lessonSlug: string;
+  lessonId: string | number;
+  lessonDetails: GeneralInteractiveLessonType[];
 };
+
+/// PROMPT OBJECT
+export type PromptCurriculumType = {
+  sectionNumber: number;
+  sectionTitle: string;
+  lessons: SubjectLessonType[];
+  isSectionCompleted: boolean;
+};
+export type PromptLessonLearnObjectType = {
+  name: string;
+  gradeLevel: number;
+  schoolLevel: "high school" | "middle school";
+  gender: "male" | "female" | "prefer not to say";
+  age: number;
+  subjectToLearn: string;
+  curriculum: PromptCurriculumType[];
+};
+
+export type PromptLessonResponseType = LessonObjectType;
