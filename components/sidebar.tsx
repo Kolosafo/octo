@@ -18,9 +18,6 @@ import SidebarLink from './sidebar-link';
 const Sidebar = () => {
   const [expanded, setExpanded] = useState(true);
   const [showMore, setShowMore] = useState(false);
-  const pathname = usePathname();
-
-  if (!pathname.includes('/learn')) return <div className='w-0'></div>;
 
   return (
     <header className='z-20 border-r bg-white transition-all'>

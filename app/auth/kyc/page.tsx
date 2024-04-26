@@ -7,10 +7,6 @@ import octo from '../../public/octo.svg';
 const Page = () => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [name, setName] = useState(false);
-  const [age, setAge] = useState(false);
-  const [grade, setGrade] = useState(false);
-  const [favSubject, setFavSubject] = useState(false);
   const [userData, setUserData] = useState({
     name: '',
     age: '',
@@ -20,6 +16,15 @@ const Page = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+    if (name === 'name'){
+      setUserData((prevData) => ({...prevData, name: value}))
+    } else if (name === 'age') {
+      setUserData((prevData) => ({...prevData, age: value}))
+    } else if (name === 'grade') {
+      setUserData((prevData) => ({...prevData, grade: value}))
+    } else  {
+      setUserData((prevData) => ({...prevData, favSubject: value}))
+    }
   };
 
   const runKyc = (e: React.FormEvent) => {

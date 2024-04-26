@@ -4,10 +4,7 @@ import { getLessonCompletionPercentage } from "@/helpers/helper";
 import { SubjectLessonType } from "@/types";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-import {
-  IoIosArrowDropdownCircle,
-  IoIosArrowDropupCircle,
-} from "react-icons/io";
+import { IoIosArrowDropdownCircle } from "react-icons/io";
 
 const LessonList = ({
   sectionTitle,
@@ -59,7 +56,7 @@ const LessonList = ({
               <div className="flex items-center gap-3">
                 <FaPlayCircle
                   onClick={() => {
-                    router.push(`/learning/${lesson.title}`);
+                    router.push(`/learn/${lesson.title}/${sectionTitle}/${lastLessonLearnt}`);
                   }}
                   size={25}
                   className="cursor-pointer"
@@ -68,32 +65,6 @@ const LessonList = ({
                   <FaCheckCircle size={25} color="lightgreen" />
                 )}
               </div>
-              {/* </div> */}
-
-              {open
-                ? lessons.map((lesson) => (
-                    <div key={lesson.title} className="p-3">
-                      <hr className="border-1 border-gray-500" />
-                      <div className="bg-gray-700 p-1 py-3 my-2 text-white flex justify-between px-4">
-                        <span>{lesson.title}</span>
-                        <div className="flex items-center gap-3">
-                          <FaPlayCircle
-                            onClick={() => {
-                              router.push(
-                                `/learn/${lesson.title}/${sectionTitle}/${lastLessonLearnt}`
-                              );
-                            }}
-                            size={25}
-                            className="cursor-pointer"
-                          />
-                          {lesson.isLessonCompleted && (
-                            <FaCheckCircle size={25} color="lightgreen" />
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  ))
-                : ""}
             </div>
           ))}
         </div>

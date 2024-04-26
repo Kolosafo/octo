@@ -9,7 +9,7 @@ const Curriculum = () => {
   const { curriculum } = useSelector((store: IRootState) => store.lesson);
 
   return (
-    <div className='p-10'>
+    <div className='p-10 min-h-screen'>
       <section className='max-w-screen-lg mx-auto transition-all'>
         <div className='pb-4 border-b mb-4'>
           <h1 className='text-2xl lg:text-4xl font-semibold'>Ongoing</h1>
