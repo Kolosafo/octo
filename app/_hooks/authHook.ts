@@ -2,11 +2,17 @@
 import { loginUser, registerUser } from "@/api/account";
 import { auth, googleProvider } from "@/firebase";
 import { activeLoading } from "@/redux/auth/authSlice";
+import { IRootState } from "@/redux/store";
 import { ThunkDispatch } from "@reduxjs/toolkit";
 import { signInWithPopup } from "firebase/auth";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 const useAuthHooks = () => {
+  const router = useRouter();
+  const { isLoading, isLogged, user } = useSelector(
+    (store: IRootState) => store.user
+  );
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
   const [error, setError] = useState<string>("");
 
@@ -20,10 +26,14 @@ const useAuthHooks = () => {
       })
     )
       .then((e) => {
-        // router.push("/dashboard");
+        if (isLogged && !user.gradeLevel) {
+          router.push("/kyc");
+          return;
+        }
+        router.push("/learn");
       })
       .catch((e) => {
-        setError("Email or Password Not Correct");
+        setError("Account does not exist, Click Signup with google");
         dispatch(activeLoading(false));
       });
   };
@@ -62,7 +72,7 @@ const useAuthHooks = () => {
         if (e.payload === "User with this email already exists") {
           setError("User with this email already exists, TRY LOG IN");
         } else {
-          console.log(e.payload);
+          router.push("/learn"); //USER IS GOING TO KYC FROM SIGN UP
         }
       })
       .catch((e) => {

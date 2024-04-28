@@ -22,7 +22,7 @@ format type and an example prompt and response:
       details:
         "<h1>In this lesson </h1> <p>we will explore how systems of equations can be used to solve real-world problems.</p>  <p>>We will start by reviewing the basics of solving systems of equations, and then we will look at some examples of how systems of equations can be used to model and solve problems in various fields such as physics, economics, and engineering.</p>",
       type: "lesson",
-      isComplete: false,
+      isComplete: true,
     },
     {
       id: 2,
@@ -44,7 +44,7 @@ format type and an example prompt and response:
       ],
       answer: "66.67 ml of 20% solution and 33.33 ml of 50% solution",
       timeout: 5000,
-      isComplete: false,
+      isComplete: true,
     },
     {
       id: 3,
@@ -68,14 +68,16 @@ format type and an example prompt and response:
       ],
       answer: "3 hours",
       timeout: 5000,
-      isComplete: false,
+      isComplete: true,
     },
   ],
 }"
 
 In the above response example, notice that there are two quizes and one actual lesson, each lessonDetails has an array of lessons which 
 must contain at least one quiz and one lesson. Usually it's all lessons and one quiz but that may be different depending on the the 
-lesson you're teaching. Below is the typescript type for the response format too:
+lesson you're teaching. Also the lessonId value will be passed to you in the prompt, provide it in your response. for the lessonSlug 
+value just slugify the lessonTitle and pass both of them in your response following the above example format. make the subject 
+value of your response the one passed to you as well. Below is the typescript type for the response format too:
 
 "
  {
@@ -104,5 +106,5 @@ AnswerOptionType = {
 };
 "
 
-Your response must STRICTLY be an object like the above example not in an array
+Your response must STRICTLY FOLLOW THE ABOVE EXAMPLE AND INFORMATION and it must be an object like the above example not in an array.
 `;

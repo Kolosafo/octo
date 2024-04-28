@@ -74,7 +74,7 @@ const InteractiveLesson = ({
         className={`p-8 text-white rounded-md flex items-center justify-center bg-main ${
           isAnswerCurrent.feedback !== ""
             ? isAnswerCurrent.isCorrect
-              ? "bg-green-500"
+              ? "!bg-green-500"
               : "bg-red-500"
             : ""
         }`}
@@ -84,6 +84,7 @@ const InteractiveLesson = ({
             "Waiting for your answer please take your time..."}
         </span>
       </div>
+      <div>{parse(props.details)}</div>
       <div className="text-lg lg:text-xl py-4 border-b">
         <p>{parse(props.question ? props.question : "")}</p>
       </div>

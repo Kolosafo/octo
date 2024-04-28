@@ -8,10 +8,19 @@ export type USER = {
   lastName: string;
   email: string;
   dob: string | null;
+  gender: "male" | "female" | "prefer not to say" | null;
   profile_picture: string | null;
   country: string | null;
-  educationLevel: "pre school" | "middle school" | "high school" | null;
+  educationLevel: "middle school" | "high school" | null;
   gradeLevel: string | null;
+};
+
+export type UpdateProfileReqType = {
+  gender: "Female" | "Male" | "Prefer not to say" | "";
+  DOB: string;
+  school_level: "middle school" | "high school" | "";
+  grade_level: number;
+  country: string;
 };
 
 export type BackendUserType = {
@@ -20,9 +29,9 @@ export type BackendUserType = {
   first_name: string;
   profile_picture: string;
   last_name: string;
-  gender: string;
+  gender: "male" | "female" | "prefer not to say";
   DOB: string;
-  school_level: "pre school" | "middle school" | "high school";
+  school_level: "middle school" | "high school";
   grade_level: string;
   country: string;
 };
@@ -139,30 +148,57 @@ export type AnswerOptionType = {
 };
 
 //// General Curriculum Type
-
+export type AllCoursesResponseType = {
+  course: GeneralCurriculumType;
+  curriculum: GenCurriculumListType[];
+};
 export type GenCurriculumListType = {
   sectionId: number | string;
   sectionTitle: string;
+  section_title?: string;
   lessons: SubjectLessonType[];
   exercise?: string;
   learningType: string;
   isSectionCompleted: boolean;
+  isSection_completed?: boolean;
 };
 export type GeneralCurriculumType = {
+  id: number | string;
   userId: number | string;
   subject: string;
-  curriculum: GenCurriculumListType[];
+  curriculum: GenCurriculumListType[] | null;
   isSubjectCompleted: boolean;
 };
 
 export type SubjectLessonType = {
-  id: string | number;
+  id?: string | number;
+  title: string;
+  isLessonCompleted?: boolean;
+  isLesson_completed?: boolean;
+  exercise?: string;
+  learningType?: "text" | "auditory" | "interactive";
+};
+export type BackendSubjectLessonRequestType = {
   title: string;
   isLessonCompleted: boolean;
   exercise?: string;
   learningType?: "text" | "auditory" | "interactive";
 };
-
+export type BackendCurriculumRequestType = {
+  id?: number;
+  course_obj: number;
+  section_title: string;
+  lessons: {
+    title: string;
+    id?: number;
+    isLesson_completed?: boolean;
+    exercise?: any;
+    learning_type?: "interactive";
+  }[];
+  learningType: "interactive";
+  isSection_completed?: boolean;
+  exercise?: any;
+};
 /// GENERAL INTERACTIVE LESSON
 
 export type GeneralInteractiveLessonType = {
@@ -188,6 +224,14 @@ export type LessonObjectType = {
   lessonDetails: GeneralInteractiveLessonType[];
 };
 
+export type SaveLessonBackendType = {
+  course: number;
+  lesson_title: string;
+  lesson_slug: string;
+  lesson_id: string;
+  lesson_details: GeneralInteractiveLessonType[];
+  parent_subject_lesson: number;
+};
 /// PROMPT OBJECT
 export type PromptCurriculumType = {
   sectionNumber: number;

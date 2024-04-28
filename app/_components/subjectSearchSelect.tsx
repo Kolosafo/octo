@@ -1,9 +1,13 @@
 "use client";
-import { useRouter } from "next/navigation";
 import React, { ChangeEvent, useEffect, useState } from "react";
 
-const SubjectSearchSelect = ({ subjects }: { subjects: string[] }) => {
-  const router = useRouter();
+const SubjectSearchSelect = ({
+  subjects,
+  handleCreateCourses,
+}: {
+  subjects: string[];
+  handleCreateCourses: (subject: string) => void;
+}) => {
   const [selectedSubject, setSelectedSubject] = useState<string | null>(null);
   const [showSubjects, setShowSubjects] = useState(subjects);
   const [searchValue, setSearchValue] = useState("");
@@ -60,9 +64,7 @@ const SubjectSearchSelect = ({ subjects }: { subjects: string[] }) => {
           </div>
           {selectedSubject && (
             <button
-              onClick={() =>
-                router.push(`/learn/curriculum/new/${selectedSubject}`)
-              }
+              onClick={() => handleCreateCourses(selectedSubject)}
               disabled={!selectedSubject ? true : false}
               className="p-1 bg-orange-500 px-4 rounded-md text-white font-bold hover:bg-orange-600 transition-all delay-100"
             >
