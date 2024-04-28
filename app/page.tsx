@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { BsArrowRight } from "react-icons/bs";
 import octo from "../public/octo.svg";
-import { calculateAgeFromDate } from "@/helpers/helper";
 
 export default function Page() {
   return (

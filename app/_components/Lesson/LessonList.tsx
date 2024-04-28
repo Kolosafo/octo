@@ -4,10 +4,7 @@ import { getLessonCompletionPercentage } from "@/helpers/helper";
 import { SubjectLessonType } from "@/types";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-import {
-  IoIosArrowDropdownCircle,
-  IoIosArrowDropupCircle,
-} from "react-icons/io";
+import { IoIosArrowDropdownCircle } from "react-icons/io";
 
 const LessonList = ({
   sectionTitle,
@@ -84,7 +81,6 @@ const LessonList = ({
                     <FaCheckCircle size={25} color="lightgreen" />
                   ))}
               </div>
-              {/* </div> */}
             </div>
           ))}
         </div>

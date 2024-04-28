@@ -12,6 +12,8 @@ import {
 import { ThunkDispatch } from "@reduxjs/toolkit";
 import { getCourses } from "@/api/course";
 import Loading from "../loading";
+import Link from "next/link";
+import { BsArrowLeft } from "react-icons/bs";
 
 const Page = ({ params }: { params?: { newCourse: string } }) => {
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
@@ -19,7 +21,9 @@ const Page = ({ params }: { params?: { newCourse: string } }) => {
   const { courses, isLoading, combinedCourseAndCurriculumObject } = useSelector(
     (store: IRootState) => store.lesson
   );
-  const { isLogged, authLoading } = useSelector((store: IRootState) => store.user);
+  const { isLogged, authLoading } = useSelector(
+    (store: IRootState) => store.user
+  );
 
   console.log("NEW COURSE: ", params);
   useEffect(() => {
@@ -28,32 +32,24 @@ const Page = ({ params }: { params?: { newCourse: string } }) => {
 
   return (
     <div className="w-full flex flex-col min-h-screen">
-      <div className="relative violet-bg px-16 py-20 -mb-5">
-        <span className="text-7xl font-bold text-white">
-          Ready to <span className="block light-peach-text">learn?</span>
-        </span>
-        <Image
-          alt="octo"
-          width={400}
-          height={400}
-          src={"/octo.png"}
-          className="absolute -bottom-14 right-4"
-          unoptimized
-        />
-      </div>
-      {
-        // !isLogged ? (
-        //   <div className="flex w-full h-44 justify-center items-center mt-10">
-        //     <Link
-        //       href="/auth/login"
-        //       className="mx-auto w-fit p-2 flex items-center justify-center font-semibold rounded-md gap-2 border-2 border-accent hover:bg-accent/10 outline-none min-w-[8rem] hover:gap-4 focus-visible:gap-4 focus-visible:bg-accent/10 transition-all duration-300"
-        //     >
-        //       <BsArrowLeft aria-hidden="true" />
-        //       Login required
-        //     </Link>
-        //   </div>
-        // ) :
-        isLoading || authLoading ? (
+      <section className="relative min-h-[85vh] gradient">
+        <div className="sticky top-0 min-h-[30vh] flex items-center justify-center p-5">
+          <h1 className=" text-mainTxt text-2xl lg:text-4xl font-bold text-center">
+            Ready to <span className="text-altTxt">learn?</span>
+          </h1>
+        </div>
+
+        {!isLogged ? (
+          <div className="flex w-full h-44 justify-center items-center mt-10">
+            <Link
+              href="/auth/login"
+              className="mx-auto w-fit p-2 flex items-center justify-center font-semibold rounded-md gap-2 border-2 border-accent hover:bg-accent/10 outline-none min-w-[8rem] hover:gap-4 focus-visible:gap-4 focus-visible:bg-accent/10 transition-all duration-300"
+            >
+              <BsArrowLeft aria-hidden="true" />
+              Login required
+            </Link>
+          </div>
+        ) : isLoading || authLoading ? (
           <Loading />
         ) : (
           <div className="h-full w-full relative rounded-t-3xl flex flex-col gap-8 z-10 p-20 bg-white min-h-full">
@@ -96,8 +92,8 @@ const Page = ({ params }: { params?: { newCourse: string } }) => {
               ))
             )}
           </div>
-        )
-      }
+        )}
+      </section>
     </div>
   );
 };
