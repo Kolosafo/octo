@@ -1,14 +1,13 @@
-"use client";
-import { keepUserLogged } from "@/api/account";
-import Sidebar from "@/components/sidebar";
-import { ReduxProvider } from "@/redux/provider";
-import { ThunkDispatch } from "@reduxjs/toolkit";
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import ReduxWrapper from "./ReduxWrapper";
-import { IRootState } from "@/redux/store";
-import AuthLoading from "./_components/authLoading";
-import { useRouter } from "next/navigation";
+'use client';
+import { keepUserLogged } from '@/api/account';
+import { ReduxProvider } from '@/redux/provider';
+import { ThunkDispatch } from '@reduxjs/toolkit';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import ReduxWrapper from './ReduxWrapper';
+import { IRootState } from '@/redux/store';
+import AuthLoading from './_components/authLoading';
+import { useRouter } from 'next/navigation';
 const BaseAppWrapper = ({
   children,
   fontFamily,
@@ -30,12 +29,10 @@ const BaseAppWrapper = ({
       dispatch(keepUserLogged(authTokens.refresh));
     }
   }, [authTokens, dispatch]);
+  
   return (
     <body className={fontFamily}>
-      <div className="grid grid-cols-[auto_1fr]">
-        <Sidebar />
-        <main className="relative min-h-screen w-full">{children}</main>
-      </div>
+      <main className='relative min-h-screen w-full'>{children}</main>
     </body>
   );
 };

@@ -11,11 +11,26 @@
   --altTxt: hsl(234 22% 37%);
   --background: hsl(0, 0%, 96%);
   --gradient: radial-gradient(circle, rgba(138,76,125,1) 35%, rgba(253,150,155,1) 100%);
+
+  --Skeleton: #b367a2;
+
 }
 
 body {
   background-color: var(--background);
   color: var(--altTxt);
+}
+
+@keyframes beat {
+  0% {
+    opacity: 100%;
+  }
+  50% {
+    opacity: 50%;
+  }
+  100% {
+    opacity: 100%;
+  }
 }
 
 @layer utilities {
@@ -25,6 +40,12 @@ body {
 
   .gradient{
     background: var(--gradient);
+  }
+
+  .skeleton {
+    background: var(--Skeleton);
+    background-size: 200% 100%;
+    animation: beat 3s infinite;
   }
 
   .fullCenter {
