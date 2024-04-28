@@ -1,10 +1,19 @@
 import React from "react";
 import { RotatingTriangles } from "react-loader-spinner";
 
-const Loading = ({ lessonTitle }: { lessonTitle: string }) => {
+const LessonLoading = ({
+  lessonTitle,
+  regeneration,
+}: {
+  lessonTitle: string;
+  regeneration?: boolean;
+}) => {
   return (
     <div className="flex flex-col justify-center items-center h-full">
-      <span>Professor Octo is generating your {lessonTitle}</span>
+      <span>
+        Professor Octo is {regeneration ? "re-generating" : "generating"} your{" "}
+        {lessonTitle}
+      </span>
       <RotatingTriangles
         visible={true}
         height="200"
@@ -17,4 +26,4 @@ const Loading = ({ lessonTitle }: { lessonTitle: string }) => {
   );
 };
 
-export default Loading;
+export default LessonLoading;

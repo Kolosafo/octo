@@ -12,15 +12,19 @@ import {
 const LessonList = ({
   sectionTitle,
   lessons,
-  lastLessonLearnt,
+  courseTitle,
+  courseId,
+  section_title,
 }: {
   sectionTitle: string;
+  section_title?: string;
   lessons: SubjectLessonType[];
   lastLessonLearnt?: string;
+  courseId: number;
+  courseTitle: string;
 }) => {
   const router = useRouter();
   const [open, setOpen] = useState(false);
-
   return (
     <div
       onClick={() => setOpen((open) => !open)}
@@ -29,7 +33,7 @@ const LessonList = ({
       <div>
         <div className="flex justify-between cursor-pointer">
           <h3 className="font-semibold leading-normal uppercase md:text-lg ">
-            {sectionTitle}
+            {section_title ?? sectionTitle}
           </h3>
           <div className="flex items-center h-full justify-center gap-2">
             <span>{getLessonCompletionPercentage(lessons)}</span>
@@ -59,41 +63,28 @@ const LessonList = ({
               <div className="flex items-center gap-3">
                 <FaPlayCircle
                   onClick={() => {
-                    router.push(`/learning/${lesson.title}`);
+                    const checkIsComplete =
+                      lesson.isLessonCompleted || lesson.isLesson_completed
+                        ? "complete"
+                        : "notComplete";
+                    router.push(
+                      // PARAMETER ORDER: courseTitle, lessonToLearn, Subject, currentLessonId, courseId, isLesson_completed
+                      `/learn/class?courseTitle=${courseTitle}&lesson=${
+                        lesson.title
+                      }&subject=${section_title ?? sectionTitle}&lessonId=${
+                        lesson.id
+                      }&courseId=${courseId}&isComplete=${checkIsComplete}`
+                    );
                   }}
                   size={25}
                   className="cursor-pointer"
                 />
-                {lesson.isLessonCompleted && (
-                  <FaCheckCircle size={25} color="lightgreen" />
-                )}
+                {lesson.isLessonCompleted ||
+                  (lesson.isLesson_completed && (
+                    <FaCheckCircle size={25} color="lightgreen" />
+                  ))}
               </div>
               {/* </div> */}
-
-              {open
-                ? lessons.map((lesson) => (
-                    <div key={lesson.title} className="p-3">
-                      <hr className="border-1 border-gray-500" />
-                      <div className="bg-gray-700 p-1 py-3 my-2 text-white flex justify-between px-4">
-                        <span>{lesson.title}</span>
-                        <div className="flex items-center gap-3">
-                          <FaPlayCircle
-                            onClick={() => {
-                              router.push(
-                                `/learn/${lesson.title}/${sectionTitle}/${lastLessonLearnt}`
-                              );
-                            }}
-                            size={25}
-                            className="cursor-pointer"
-                          />
-                          {lesson.isLessonCompleted && (
-                            <FaCheckCircle size={25} color="lightgreen" />
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  ))
-                : ""}
             </div>
           ))}
         </div>

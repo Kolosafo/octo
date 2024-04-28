@@ -1,4 +1,5 @@
 import { ROOT_ULR } from "@/helpers/helper";
+import { UpdateProfileReqType } from "@/types";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export type RegisterUserType = {
@@ -34,6 +35,40 @@ export const loginUser = createAsyncThunk(
     return fetch(`${ROOT_ULR}/account/token/`, {
       method: "POST",
       headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    }).then((res) => res.json());
+  }
+);
+
+export const keepUserLogged = createAsyncThunk(
+  "user/keepUserLogged",
+  async (payload: string | null) => {
+    return fetch(`${ROOT_ULR}/account/token/refresh/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ refresh: payload }),
+    }).then((res) => res.json());
+  }
+);
+
+export const updateUserProfile = createAsyncThunk(
+  "user/updateUserProfile",
+  async (payload: UpdateProfileReqType) => {
+    const getAccessToken = localStorage.getItem("authTokens") || "{}";
+    if (!JSON.parse(getAccessToken) || getAccessToken === "{}") {
+      window.location.replace("/auth/login");
+      return;
+    }
+    return fetch(`${ROOT_ULR}/account/update_profile/`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${
+          getAccessToken && JSON.parse(getAccessToken).access
+        }`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(payload),
