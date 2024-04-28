@@ -6,6 +6,7 @@ import {
   getLesson,
   saveLessonLearnt,
 } from "@/api/course";
+import { filterLessonsById } from "@/helpers/helper";
 import {
   BackendCurriculumRequestType,
   GenCurriculumListType,
@@ -47,7 +48,9 @@ const lessonSlice = createSlice({
         const courseCurriculum = state.combinedCourseAndCurriculumObject.find(
           (obj: AllCoursesResponseType) => obj.course.id === parentCourseId
         );
-        state.activeCourseCurriculum = courseCurriculum?.curriculum ?? null;
+        state.activeCourseCurriculum = courseCurriculum
+          ? filterLessonsById(courseCurriculum.curriculum) // WE HAVE TO ALWAYS FILTER THE CURRICULUM GOING INTO THE,
+          : null; // ACTIVE CURRICULUM VALUE BECAUSE THE BACKEND SOMETIMES RETURNS AN UNSORTED LESSONS LIST
       }
     },
   },
@@ -80,6 +83,7 @@ const lessonSlice = createSlice({
           return;
         }
         const userCourses: AllCoursesResponseType[] = payload.data;
+        console.log("ALL COURSE OBJ: ", userCourses);
         state.courses = userCourses.map((course) => course.course);
         state.combinedCourseAndCurriculumObject = userCourses;
         state.isLoading = false;
@@ -109,7 +113,9 @@ const lessonSlice = createSlice({
               : false,
           };
         });
-        state.activeCourseCurriculum = makeStateCurriculumType;
+        state.activeCourseCurriculum = filterLessonsById(
+          makeStateCurriculumType
+        );
         state.isLoading = false;
       }),
       builder.addCase(createCurriculum.rejected, (state, { payload }) => {
@@ -135,7 +141,9 @@ const lessonSlice = createSlice({
               : false,
           };
         });
-        state.activeCourseCurriculum = makeStateCurriculumType;
+        state.activeCourseCurriculum = filterLessonsById(
+          makeStateCurriculumType
+        );
         console.log("COURSE CURRICULIM: ", courseCurriculum);
         state.isLoading = false;
       }),
