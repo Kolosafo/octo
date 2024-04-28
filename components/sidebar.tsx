@@ -85,17 +85,16 @@ const Sidebar = () => {
             />
           </button>
         </div>
-        {(isLogged && !user.gradeLevel) ||
-          (!user.educationLevel && (
-            <button
-              onClick={() => {
-                router.push("/kyc");
-              }}
-              className="flex py-1 px-1 rounded-sm text-sm justify-center border-[1px] border-black bg-rose-300/50 text-black font-semibold items-center gap-3"
-            >
-              Action Required <BiError size={25} color="orangered" />
-            </button>
-          ))}
+        {isLogged && !user.gradeLevel && (
+          <button
+            onClick={() => {
+              router.push("/kyc");
+            }}
+            className="flex py-1 px-1 rounded-sm text-sm justify-center border-[1px] border-black bg-rose-300/50 text-black font-semibold items-center gap-3"
+          >
+            Action Required <BiError size={25} color="orangered" />
+          </button>
+        )}
 
         {/* main nav */}
         <ul className="flex flex-col gap-4 min-w-full py-4">
