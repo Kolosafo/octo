@@ -3,7 +3,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import { HarmBlockThreshold, HarmCategory } from "@google/generative-ai";
 import { systemInstruction } from "./lesson/learnLessonPrompt";
 
-export const APIKEY = process.env.NEXT_PUBLIC_API_KEY || "";
+export const APIKEY = "AIzaSyCPKsssjNI-buNSADtDT8zZcV8br6FVYFI";
 const genAI = new GoogleGenerativeAI(APIKEY);
 
 // ...
