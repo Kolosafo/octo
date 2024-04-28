@@ -119,3 +119,15 @@ export const ImgLoader = ({ src }: ImageLoaderProps) => {
 export const calculateAgeFromDate = (date: string): number => {
   return moment().diff(moment(date), "years");
 };
+
+export function filterLessonsById(
+  dataObj: GenCurriculumListType[]
+): GenCurriculumListType[] {
+  return dataObj.map((section) => {
+    const { lessons, ...rest } = section; // Destructure lessons and other properties
+    return {
+      ...rest,
+      lessons: lessons.sort((a: any, b: any) => a.id - b.id),
+    };
+  });
+}
