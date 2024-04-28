@@ -4,15 +4,12 @@ import Link from "next/link";
 import Image from "next/image";
 import logo from "../public/logo.svg";
 import { BiBook, BiLineChart } from "react-icons/bi";
-import { LuChevronFirst, LuChevronLast } from "react-icons/lu";
+import { LuChevronFirst } from "react-icons/lu";
 import { MdMoreVert } from "react-icons/md";
-import { IoSettingsOutline } from "react-icons/io5";
-import { usePathname, useRouter } from "next/navigation";
-import { GoHome } from "react-icons/go";
+import { useRouter } from "next/navigation";
 import { MdFormatListBulletedAdd } from "react-icons/md";
 import { BsController } from "react-icons/bs";
 import { MdHelpOutline } from "react-icons/md";
-import { BiListPlus } from "react-icons/bi";
 import SidebarLink from "./sidebar-link";
 import { IRootState } from "@/redux/store";
 import { useDispatch, useSelector } from "react-redux";
@@ -21,6 +18,7 @@ import { ThunkDispatch } from "@reduxjs/toolkit";
 import { logout } from "@/redux/auth/authSlice";
 import { ThreeDots } from "react-loader-spinner";
 import { BiError } from "react-icons/bi";
+import Skeleton from "./skeleton";
 
 const Sidebar = () => {
   const router = useRouter();
@@ -28,18 +26,16 @@ const Sidebar = () => {
 
   const [expanded, setExpanded] = useState(true);
   const [showMore, setShowMore] = useState(false);
-  const pathname = usePathname();
 
   const { user, authLoading, isLogged } = useSelector(
     (store: IRootState) => store.user
   );
   console.log("USER: ", user);
-  if (!pathname.includes("/learn")) return <div className="w-0"></div>;
 
   return (
     <header className="z-20 border-r bg-white transition-all">
       <nav className="sticky top-0 h-full max-h-[100svh] flex flex-col gap-6 py-6 px-4 justify-between transition-all duration-300">
-        {/* logo & toggle*/}
+        {/* logo*/}
         <div
           className={`relative flex ${
             expanded ? "gap-0" : "flex-col gap-4"
@@ -57,20 +53,8 @@ const Sidebar = () => {
               </span>
             </h1>
           </Link>
-          {/* <button
-            type='button'
-            onClick={() => setExpanded(!expanded)}
-            title={expanded ? 'Close' : 'Open'}
-            className='w-10 h-10 rounded-md bg-main text-mainTxt flex items-center justify-center focus-visible:outline-main focus-visible:bg-white focus-visible:text-main hover:bg-white border-2 hover:border-main hover:text-main transition duration-300'
-          >
-            {expanded ? (
-              <LuChevronFirst size={20} />
-            ) : (
-              <LuChevronLast size={20} />
-            )}
-          </button> */}
 
-          {/* alternative toggle */}
+          {/* toggle */}
           <button
             type="button"
             onClick={() => setExpanded(!expanded)}
@@ -85,6 +69,8 @@ const Sidebar = () => {
             />
           </button>
         </div>
+
+        {/* alert */}
         {isLogged && !user.gradeLevel && (
           <button
             onClick={() => {
@@ -142,18 +128,7 @@ const Sidebar = () => {
 
         {/* user details / profile */}
         {authLoading ? (
-          <div className="w-full flex justify-center items-center border-t">
-            <ThreeDots
-              visible={true}
-              height="40"
-              width="40"
-              color="#8a4c7d"
-              radius="9"
-              ariaLabel="three-dots-loading"
-              wrapperStyle={{}}
-              wrapperClass=""
-            />
-          </div>
+          <Skeleton type="profile" />
         ) : isLogged ? (
           <div className="border-t flex pt-2">
             <Image
@@ -204,13 +179,9 @@ const Sidebar = () => {
             </div>
           </div>
         ) : (
-          <button
-            type="button"
-            className="w-full bg-main text-mainTxt text-center px-4 py-1.5 rounded-md outline-main outline-offset-1 outline-1 focus-visible:outline-dashed transition duration-300"
-            onClick={() => router.push("/auth/login")}
-          >
+          <Link href="/auth/login" className="w-full bg-main text-mainTxt text-center px-4 py-1.5 rounded-md outline-main outline-offset-1 outline-1 focus-visible:outline-dashed transition duration-300">
             Login
-          </button>
+          </Link>
         )}
       </nav>
     </header>
