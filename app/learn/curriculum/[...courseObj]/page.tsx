@@ -13,7 +13,7 @@ import { useRouter } from 'next/navigation';
 
 const Curriculum = ({ params }: { params: { courseObj: string[] } }) => {
   const router = useRouter();
-  
+
   const { activeCourseCurriculum, isLoading } = useSelector(
     (store: IRootState) => store.lesson
   );
@@ -51,7 +51,7 @@ const Curriculum = ({ params }: { params: { courseObj: string[] } }) => {
       </section>
 
       <section className='relative p-6 bg-white min-h-[70vh]'>
-        <div className='h-full w-full rounded-t-3xl border-black flex flex-col gap-8 z-10 p-10 bg-white min-h-full'>
+        <div className='max-w-screen-lg mx-auto rounded-t-3xl border-black flex flex-col gap-8 z-10 p-10 bg-white min-h-full'>
           {isLoading ? (
             <Loading loadMsg='Fetching your course curriculum' />
           ) : activeCourseCurriculum && activeCourseCurriculum.length > 0 ? (

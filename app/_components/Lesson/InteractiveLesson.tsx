@@ -84,7 +84,7 @@ const InteractiveLesson = ({
             "Waiting for your answer please take your time..."}
         </span>
       </div>
-      <div>{parse(props.details)}</div>
+      <p>{parse(props.details)}</p>
       <div className="text-lg lg:text-xl py-4 border-b">
         <p>{parse(props.question ? props.question : "")}</p>
       </div>
