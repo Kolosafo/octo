@@ -6,23 +6,24 @@ import React, { FC } from "react";
 export type TopicCardType = {
   courseId: number | string;
   subject: string;
-  numOfLessons: number;
-  progressPercentage: number | string;
+  numOfLessons?: number;
+  progressPercentage?: number | string;
+  type: "Full course" | "Short course";
 };
 const TopicCard: FC<TopicCardType> = ({
   subject,
   courseId,
   numOfLessons,
   progressPercentage,
+  type,
 }) => {
   const router = useRouter();
-  console.log("PERCENTAGE: ", progressPercentage);
   return (
     <div className="h-[40%] w-full rounded-md flex flex-col py-6 px-10 light-peach-bg">
       <div className="flex justify-between">
         <div className="flex flex-col">
           <span className="text-2xl font-bold text-white">{subject}</span>
-          {numOfLessons === 0 ? (
+          {numOfLessons === 0 && type !== "Short course" ? (
             <span
               className="cursor-pointer"
               onClick={() => router.push(`/learn/curriculum/${courseId}`)}
@@ -30,9 +31,11 @@ const TopicCard: FC<TopicCardType> = ({
               Get started
             </span>
           ) : (
-            <span className="font-semibold text-black">
-              {numOfLessons} lessons
-            </span>
+            type !== "Short course" && (
+              <span className="font-semibold text-black">
+                {numOfLessons} Sections
+              </span>
+            )
           )}
         </div>
 
@@ -44,7 +47,11 @@ const TopicCard: FC<TopicCardType> = ({
             height={25}
             className="object-contain cursor-pointer"
             onClick={() =>
-              router.push(`/learn/curriculum/${subject}/${courseId}`)
+              type === "Full course"
+                ? router.push(`/learn/curriculum/${subject}/${courseId}`)
+                : router.push(
+                    `/learn/quick-learn?subject=${subject}&subjectId=${courseId}&isComplete=complete`
+                  )
             }
           />
         </div>

@@ -1,6 +1,7 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import lessonSlice from "./learn/learnSlice";
 import authSlice from "./auth/authSlice";
+import quickLearnSlice from "./quickLearn/quickLearnSlice";
 import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist";
 
@@ -18,6 +19,7 @@ const authPersistConfig = {
 const Allreducer = combineReducers({
   user: authSlice,  
   lesson: persistReducer(lessonPersistConfig, lessonSlice),
+  quickLearn: quickLearnSlice
 });
 export const store = configureStore({
   reducer: Allreducer,
