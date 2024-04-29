@@ -3,11 +3,12 @@ import { saveLessonLearnt } from '@/api/course';
 import InteractiveLesson from '@/app/_components/Lesson/InteractiveLesson';
 import LessonLoading from '@/app/_components/Loading';
 import useGenerateLesson from '@/app/_hooks/AI/generateLessonHook';
+import Skeleton from '@/components/skeleton';
 import { subjects } from '@/mockups/subjects';
 import { GeneralInteractiveLessonType } from '@/types';
 import { ThunkDispatch } from '@reduxjs/toolkit';
 import { useRouter, useSearchParams } from 'next/navigation';
-import React from 'react';
+import React, { useState } from 'react';
 import { MdCancel } from 'react-icons/md';
 import { ThreeDots } from 'react-loader-spinner';
 import { useDispatch } from 'react-redux';
@@ -68,6 +69,7 @@ const Page = () => {
     }
   };
 
+
   return (
     <div className='relative min-h-screen gradient'>
       <div className='sticky top-0 min-h-[20vh] flex flex-col items-center justify-center p-5'>
@@ -78,10 +80,13 @@ const Page = () => {
 
       <section className='relative p-6 bg-white min-h-[80vh]'>
         {isStateLoading || !lessonObjectList ? (
-          <LessonLoading
-            regeneration={isRegeneration}
-            lessonTitle={`${lessonToLearn} lessons`}
-          />
+          <div className='max-w-screen-md mx-auto min-h-[60vh] flex flex-col gap-8 text-center'>
+            <p>
+              Professor Octo is{' '}
+              {isRegeneration ? 're-generating' : 'generating'} your{' '}lesson
+            </p>
+            <Skeleton type='lesson' />
+          </div>
         ) : (
           <>
             <div className='max-w-screen-md mx-auto'>
@@ -90,7 +95,7 @@ const Page = () => {
                   (lessonObj: GeneralInteractiveLessonType, index: number) => (
                     <button
                       type='button'
-                      title={'Question' + index}
+                      title={'Question ' + index}
                       key={lessonObj.id}
                       className={`w-5 h-5 rounded-full border-none bg-main outline-none transition duration-300${
                         activeLessonIndex === index
@@ -103,8 +108,9 @@ const Page = () => {
                 )}
               </div>
               <div
-                style={{ display: activeLessonIndex > 1 ? 'flex' : 'none' }} // ask user if they dont understand after at least one lesson
-                className='flex flex-col gap-1 absolute top-7 right-10'
+                className={`${
+                  activeLessonIndex > 1 ? 'flex' : 'hidden'
+                } flex-col gap-1 absolute top-7 right-10`} // ask user if they dont understand after at least one lesson
               >
                 <button
                   onClick={() => setShowDontUnderstand(true)}
@@ -113,16 +119,17 @@ const Page = () => {
                   I don&apos;t understand
                 </button>
                 <div
-                  style={{ display: showDontUnderstand ? 'flex' : 'none' }}
-                  className='relative flex flex-col gap-4 w-40 py-2 bg-white px-2 border-[1px] border-neutral-500'
+                  className={`relative ${
+                    showDontUnderstand ? 'flex' : 'hidden'
+                  } flex-col gap-4 w-40 py-2 bg-white px-2 border-[1px] border-neutral-500`}
                 >
                   <MdCancel
                     className='absolute top-1 right-1 cursor-pointer'
                     onClick={() => setShowDontUnderstand(false)}
                   />
                   <span className='text-xs'>
-                    Tell Octo what you don&apos;t understand in this lesson so it
-                    can improve immediately
+                    Tell Octo what you don&apos;t understand in this lesson so
+                    it can improve immediately
                   </span>
                   <input
                     className='text-xs rounded-lg w-full p-1 bg-black/60 outline-none text-mainTxt placeholder:text-mainTxt'
@@ -156,7 +163,8 @@ const Page = () => {
                         course: parseInt(courseId),
                         parent_subject_lesson: parseInt(lessonId),
                         lesson_title: lessonToLearn,
-                        lesson_slug: fullLessonObject.lessonSlug ?? lessonToLearn,
+                        lesson_slug:
+                          fullLessonObject.lessonSlug ?? lessonToLearn,
                         lesson_id: fullLessonObject.lessonId.toString() ?? '0',
                         lesson_details: fullLessonObject.lessonDetails,
                       })
@@ -194,8 +202,6 @@ const Page = () => {
           </>
         )}
       </section>
-
-      
     </div>
   );
 };

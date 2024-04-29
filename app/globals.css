@@ -12,7 +12,7 @@
   --background: hsl(0, 0%, 96%);
   --gradient: radial-gradient(circle, rgba(138,76,125,1) 35%, rgba(253,150,155,1) 100%);
 
-  --Skeleton: #b884ac;
+  --Skeleton: hsl(0, 0%, 80%);
 
 }
 
