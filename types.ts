@@ -249,4 +249,9 @@ export type PromptLessonLearnObjectType = {
   curriculum: PromptCurriculumType[];
 };
 
-export type PromptLessonResponseType = LessonObjectType;
+export type QuickLearnType = {
+  user?: number | string;
+  id?: number;
+  subject: string;
+  lessonDetails: GeneralInteractiveLessonType[];
+};

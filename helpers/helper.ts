@@ -7,7 +7,7 @@ import {
 import moment from "moment";
 import { ImageLoaderProps } from "next/image";
 
-export const ROOT_ULR = "https://gemina-api-875e2fb4c9be.herokuapp.com"; // "http://127.0.0.1:8000";
+export const ROOT_ULR = "http://127.0.0.1:8000"; //"https://gemina-api-875e2fb4c9be.herokuapp.com";
 
 export function getLessonCompletionPercentage(lessons: SubjectLessonType[]) {
   const totalLessons = lessons.length;
@@ -77,6 +77,18 @@ export function calculateCourseCompletion(
     return -1;
   }
 }
+
+export const checkNumberOfLessons = (
+  courseId: number | string,
+  courseData: AllCoursesResponseType[] | null
+) => {
+  const course = courseData?.find((course) => course.course.id === courseId);
+  if (course) {
+    return course.curriculum.length;
+  } else {
+    return 0;
+  }
+};
 
 export function getPreviousLessonTitle(
   lessonTitle: string,

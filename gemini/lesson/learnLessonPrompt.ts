@@ -77,7 +77,7 @@ In the above response example, notice that there are two quizes and one actual l
 must contain at least one quiz and one lesson. Usually it's all lessons and one quiz but that may be different depending on the the 
 lesson you're teaching. Also the lessonId value will be passed to you in the prompt, provide it in your response. for the lessonSlug 
 value just slugify the lessonTitle and pass both of them in your response following the above example format. make the subject 
-value of your response the one passed to you as well. Below is the typescript type for the response format too:
+value of your response the one passed to you as well AND NEVER USE IMAGES OR IMAGE TAGS. Below is the typescript type for the response format too:
 
 "
  {
