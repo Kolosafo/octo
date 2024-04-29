@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import octo from "../../public/octo.svg";
+import octo from "../../../public/octo.svg"
 import { UpdateProfileReqType } from "@/types";
 import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "@/redux/store";
@@ -80,13 +80,12 @@ const Page = () => {
           <form className="relative flex flex-col gap-6" onSubmit={runKyc}>
             <div className="flex flex-col gap-2.5">
               <label
-                htmlFor="educationLevel"
+                htmlFor="school_level"
                 className="block text-altTxt text-sm md:text-base font-medium"
               >
                 Current Education Level
               </label>
               <select
-                title="What is your current education level?"
                 name="school_level"
                 id="school_level"
                 className="py-4 px-4 rounded-md shadow-md element transition duration-300"
@@ -100,13 +99,12 @@ const Page = () => {
             </div>
             <div className="flex flex-col gap-2.5">
               <label
-                htmlFor="educationLevel"
+                htmlFor="grade_level"
                 className="block text-altTxt text-sm md:text-base font-medium"
               >
                 Current Grade
               </label>
               <select
-                title="What is your current education level?"
                 name="grade_level"
                 id="grade_level"
                 className="py-4 px-4 rounded-md shadow-md element transition duration-300"
@@ -132,7 +130,6 @@ const Page = () => {
                 Gender
               </label>
               <select
-                title="What is your current education level?"
                 name="gender"
                 id="gender"
                 className="py-4 px-4 rounded-md shadow-md element transition duration-300"
@@ -147,7 +144,7 @@ const Page = () => {
             </div>
             <div className="flex flex-col gap-2.5">
               <label
-                htmlFor="gender"
+                htmlFor="DOB"
                 className="block text-altTxt text-sm md:text-base font-medium"
               >
                 Date of Birth
@@ -163,7 +160,7 @@ const Page = () => {
             </div>
             <div className="flex flex-col gap-2.5">
               <label
-                htmlFor="grade"
+                htmlFor="country"
                 className="block text-altTxt text-sm md:text-base font-medium"
               >
                 Country

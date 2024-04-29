@@ -7,11 +7,11 @@ interface SkeletonProps {
 function Skeleton(props: SkeletonProps) {
   if (props.type === 'profile') {
     return (
-      <li className='py-2 px-4 rounded-lg flex gap-4 items-center w-full bg-cardBg min-h-[56px] overflow-hidden transition duration-300'>
-        <div className='skeleton min-w-[30px] min-h-[30px] rounded-xl'></div>
+      <li className='border-t pt-2 flex gap-2 items-center w-full min-h-[56px] overflow-hidden transition duration-300'>
+        <div className='skeleton w-10 h-10 rounded-md'></div>
         <div className='flex flex-col gap-2 w-full'>
-          <div className='skeleton w-2/4 h-2.5 rounded-lg'></div>
-          <div className='skeleton w-1/4 h-1.5 rounded-lg'></div>
+          <div className='skeleton w-2/4 h-2.5 rounded-md'></div>
+          <div className='skeleton w-1/4 h-1.5 rounded-md'></div>
         </div>
       </li>
     );

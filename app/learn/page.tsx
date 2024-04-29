@@ -13,7 +13,9 @@ import { ThunkDispatch } from '@reduxjs/toolkit';
 import { getCourses } from '@/api/course';
 import Loading from '../loading';
 import Link from 'next/link';
-import { BsArrowLeft } from 'react-icons/bs';
+
+
+import { FiPlusCircle } from 'react-icons/fi';
 
 const Page = ({ params }: { params?: { newCourse: string } }) => {
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
@@ -26,6 +28,7 @@ const Page = ({ params }: { params?: { newCourse: string } }) => {
   );
 
   console.log('NEW COURSE: ', params);
+
   useEffect(() => {
     isLogged ? dispatch(getCourses()) : null;
   }, [dispatch, isLogged]);
@@ -35,33 +38,36 @@ const Page = ({ params }: { params?: { newCourse: string } }) => {
       <section className='sticky top-0 min-h-[30vh] flex items-center justify-center p-5 gradient'>
         <div className='sticky top-0 min-h-[30vh] flex items-center justify-center p-5'>
           <h1 className=' text-mainTxt text-2xl lg:text-4xl font-bold text-center'>
-            Ready to <span className='text-altTxt'>learn?</span>
+            Ready to learn?
           </h1>
         </div>
       </section>
 
-      <section className='relative p-6 grid place-content-center bg-white min-h-[70vh]'>
+      <section className='relative p-6 bg-white min-h-[70vh]'>
         {!isLogged ? (
-          <div className='flex w-full h-44 justify-center items-center mt-10'>
+          <div className='flex w-full min-h-[50vh] justify-center items-center'>
             <p className='max-w-screen-sm mx-auto text-center text-lg'>
-              Hi there, you need to create an account so we can personalize
-              your experience. please use the login button on the sidebar to
+              Hi there, you need to be signed in for a personalized
+              experience. please use the &quot;login&quot; button on the sidebar to
               continue.
             </p>
           </div>
         ) : isLoading || authLoading ? (
           <Loading />
         ) : (
-          <div className='h-full w-full relative rounded-t-3xl flex flex-col gap-8 z-10 p-20 bg-white min-h-full'>
+          <div className='max-w-screen-md mx-auto flex flex-col gap-8 bg-white min-h-full'>
             <button
-              className='px-5 font-bold py-1 violet-bg absolute text-white top-2 right-8 rounded-md'
+              className='flex items-center gap-2 px-4 py-2 bg-main text-white font-semibold rounded-md self-end'
               onClick={() => {
                 !isLogged
                   ? router.push('/auth/login')
                   : router.push('/new-course');
               }}
             >
+              <FiPlusCircle size={20} />
+              <span>
               New
+              </span>
             </button>
             {!courses || courses.length === 0 ? (
               <div className='flex flex-col gap-4 items-center'>
