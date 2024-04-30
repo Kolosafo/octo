@@ -4,7 +4,6 @@ import InteractiveLesson from '@/app/_components/Lesson/InteractiveLesson';
 import LessonLoading from '@/app/_components/Loading';
 import useGenerateLesson from '@/app/_hooks/AI/generateLessonHook';
 import Skeleton from '@/components/skeleton';
-import { subjects } from '@/mockups/subjects';
 import { GeneralInteractiveLessonType } from '@/types';
 import { ThunkDispatch } from '@reduxjs/toolkit';
 import { useRouter, useSearchParams } from 'next/navigation';

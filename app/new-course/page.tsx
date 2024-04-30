@@ -46,9 +46,9 @@ const Page = () => {
     }
   };
   return (
-    <div>
+    <div className="py-8">
       <span>{errorMsg}</span>
-      <span>Select a subject</span>
+
       {isLoading ? (
         <Loading lessonTitle="Loading..." /> // SHOULD BE CHANGED WITH THE LOADING ANIMATION KIRIN BUILT
       ) : (
