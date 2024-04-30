@@ -1,3 +1,4 @@
+import { BalloonObject } from "@/app/learn/games/octoCrush/page";
 import {
   AllCoursesResponseType,
   GenCurriculumListType,
@@ -142,4 +143,12 @@ export function filterLessonsById(
       lessons: lessons.sort((a: any, b: any) => a.id - b.id),
     };
   });
+}
+
+export function findSlowestBalloon(
+  balloons: [BalloonObject, BalloonObject, BalloonObject, BalloonObject]
+) {
+  return balloons.reduce((slowest, current) => {
+    return current.movementSpeed > slowest.movementSpeed ? current : slowest;
+  }, balloons[0]); // Provide an initial value (first element)
 }
