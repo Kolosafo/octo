@@ -100,81 +100,145 @@ const SubjectSearchSelect = ({
 
     console.log("Checking endless loop...");
   }, [searchTopicValue, subjectsTopicUnchanged]);
-  return (
-    <div className="w-full ">
-      <div className="w-full  min-h-screen flex items-center justify-center">
-        <div className="relative flex flex-col justify-center gap-6">
-          <span className="self-center">Select a subject</span>
-          <div
-            id="dropdown-menu"
-            className="relative border-2 h-[70vh] overflow-y-scroll border-black right-0 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 p-1 space-y-1"
-          >
-            {subjects.map((subject, index) => (
-              <span
-                key={index}
-                className="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md"
-                onClick={() => {
-                  handleSelectSubject(subject);
-                  setShowTopicDropDown(true);
-                  setSelectedSubject(subject);
-                }}
-              >
-                {subject}
-              </span>
-            ))}
-          </div>
 
-          <div
-            className={`flex flex-col gap-2 mt-10 ${
-              showTopicDropDown ? "visible" : "hidden"
-            }`}
-          >
-            <span className="self-center">
-              Choose a {selectedSubject} Topic To Learn
-            </span>
-            <input
-              id="search-input"
-              className="block w-full px-4 py-2 text-gray-800 border rounded-md  border-gray-300 focus:outline-none"
-              type="text"
-              onChange={handleTopicInputChange}
-              value={searchTopicValue}
-              placeholder="Search items"
-              autoComplete="off"
-            />
+  return (
+    // <div className='max-w-screen-md mx-auto flex flex-col gap-8 justify-center mt-10'>
+    //   {/* search input */}
+    //   <label
+    //     htmlFor='search'
+    //     className='bg-mainBg bg-alt h-fit flex items-center py-4 px-6 rounded-md shadow-sm transition duration-300'
+    //   >
+    //     <CiSearch size={25} aria-hidden='true' />
+    //     <input
+    //       id='search'
+    //       type='text'
+    //       autoComplete='off'
+    //       value={searchValue}
+    //       placeholder='Search a topic...'
+    //       onChange={handleInputChange}
+    //       className='w-full h-fit bg-transparent placeholder:text-sm placeholder:tracking-widest px-4 border-none outline-none transition duration-300'
+    //     />
+    //     {searchValue && (
+    //       <button
+    //         type='button'
+    //         title='clear input'
+    //         onClick={() => setSearchValue('')}
+    //       >
+    //         <IoClose aria-hidden='true' />
+    //       </button>
+    //     )}
+    //   </label>
+
+    //   {/* dropdown list */}
+    //   <div
+    //     id='dropdown-menu'
+    //     className='relative border max-h-[20rem] overflow-y-scroll right-0 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 p-1 space-y-1'
+    //   >
+    //     {/* <!-- Dropdown content goes here --> */}
+    //     {showSubjects.length > 0 ? (
+    //       showSubjects.map((subject, index) => (
+    //         <span
+    //           key={index}
+    //           className='block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md'
+    //           onClick={() => setSelectedSubject(subject)}
+    //         >
+    //           {subject}
+    //         </span>
+    //       ))
+    //     ) : (
+    //       <span
+    //         onClick={() => setSelectedSubject(searchValue)}
+    //         className='block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md'
+    //       >
+    //         {searchValue}
+    //       </span>
+    //     )}
+    //   </div>
+    //   {selectedSubject && (
+    //     <button
+    //       onClick={() => handleCreateCourses(selectedSubject)}
+    //       disabled={!selectedSubject ? true : false}
+    //       className='p-1 bg-orange-500 px-4 rounded-md text-white font-bold hover:bg-orange-600 transition-all delay-100'
+    //     >
+    //       Proceed to learning {selectedSubject}
+    //     </button>
+    //   )}
+    // </div>
+    return (
+      <div className="w-full ">
+        <div className="w-full  min-h-screen flex items-center justify-center">
+          <div className="relative flex flex-col justify-center gap-6">
+            <span className="self-center">Select a subject</span>
             <div
               id="dropdown-menu"
               className="relative border-2 h-[70vh] overflow-y-scroll border-black right-0 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 p-1 space-y-1"
-              ref={topicDropDownRef}
             >
-              {/* <!-- Search input --> */}
-
-              {/* <!-- Dropdown content goes here --> */}
-              {subjectsTopic && subjectsTopic.length > 0
-                ? subjectsTopic.map((subject, index) => (
-                    <span
-                      key={index}
-                      className="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md"
-                      onClick={() => setSelectedTopic(subject)}
-                    >
-                      {subject}
-                    </span>
-                  ))
-                : null}
+              {subjects.map((subject, index) => (
+                <span
+                  key={index}
+                  className="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md"
+                  onClick={() => {
+                    handleSelectSubject(subject);
+                    setShowTopicDropDown(true);
+                    setSelectedSubject(subject);
+                  }}
+                >
+                  {subject}
+                </span>
+              ))}
             </div>
-          </div>
-
-          {selectedTopic && (
-            <button
-              onClick={() => handleCreateCourses(selectedTopic)}
-              disabled={!selectedTopic ? true : false}
-              className="p-1 bg-orange-500 px-4 rounded-md text-white font-bold hover:bg-orange-600 transition-all delay-100"
+  
+            <div
+              className={`flex flex-col gap-2 mt-10 ${
+                showTopicDropDown ? "visible" : "hidden"
+              }`}
             >
-              Proceed to learning {selectedTopic}
-            </button>
-          )}
+              <span className="self-center">
+                Choose a {selectedSubject} Topic To Learn
+              </span>
+              <input
+                id="search-input"
+                className="block w-full px-4 py-2 text-gray-800 border rounded-md  border-gray-300 focus:outline-none"
+                type="text"
+                onChange={handleTopicInputChange}
+                value={searchTopicValue}
+                placeholder="Search items"
+                autoComplete="off"
+              />
+              <div
+                id="dropdown-menu"
+                className="relative border-2 h-[70vh] overflow-y-scroll border-black right-0 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 p-1 space-y-1"
+                ref={topicDropDownRef}
+              >
+                {/* <!-- Search input --> */}
+  
+                {/* <!-- Dropdown content goes here --> */}
+                {subjectsTopic && subjectsTopic.length > 0
+                  ? subjectsTopic.map((subject, index) => (
+                      <span
+                        key={index}
+                        className="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md"
+                        onClick={() => setSelectedTopic(subject)}
+                      >
+                        {subject}
+                      </span>
+                    ))
+                  : null}
+              </div>
+            </div>
+  
+            {selectedTopic && (
+              <button
+                onClick={() => handleCreateCourses(selectedTopic)}
+                disabled={!selectedTopic ? true : false}
+                className="p-1 bg-orange-500 px-4 rounded-md text-white font-bold hover:bg-orange-600 transition-all delay-100"
+              >
+                Proceed to learning {selectedTopic}
+              </button>
+            )}
+          </div>
         </div>
       </div>
-    </div>
   );
 };
 
