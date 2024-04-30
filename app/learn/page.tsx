@@ -40,13 +40,15 @@ const Page = ({ params }: { params?: { newCourse: string } }) => {
   useEffect(() => {
     isLogged ? dispatch(getCourses()) : null;
   }, [dispatch, isLogged]);
+  
   useEffect(() => {
     isLogged && courses ? dispatch(getUserQuickLearning()) : null; // we only want to get the Short courses when the courses have loaded:
     console.log("Endless loop check");
   }, [dispatch, isLogged, courses]); // THis is to prevent request overload to the DB
+
   return (
     <div className="relative min-h-screen gradient">
-      <section className="sticky top-0 min-h-[30vh] flex items-center justify-center p-5 gradient">
+      <section className="sticky top-0 min-h-[30vh] flex items-center justify-center">
         <div className="sticky top-0 min-h-[30vh] flex items-center justify-center p-5">
           <h1 className=" text-mainTxt text-2xl lg:text-4xl font-bold text-center">
             Ready to learn?
