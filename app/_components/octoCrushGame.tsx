@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, MutableRefObject } from "react";
+import React, { useState, useEffect, MutableRefObject, useRef } from "react";
 import Baloon from "@/app/_components/Baloon";
 import { motion } from "framer-motion";
 import { findSlowestBalloon } from "@/helpers/helper";
@@ -30,6 +30,10 @@ const GameDisplayObject = ({
   handleDecreasePoints,
   handleGameOver,
 }: Props) => {
+  const balloonOne = useRef<any>(null);
+  const balloonTwo = useRef<any>(null);
+  const balloonThree = useRef<any>(null);
+  const balloonFour = useRef<any>(null);
   const [showObject, setShowObject] = useState({
     objectOne: true,
     objectTwo: true,
@@ -37,24 +41,82 @@ const GameDisplayObject = ({
     objectFour: true,
   });
   const [screenHeight, setScreenHeight] = useState(screen.height);
+  const [answerFeedBack, setAnswerFeedBack] = useState({
+    isCorrect: false,
+    feedback: "",
+  });
 
+  const handleGiveFeedback = (isCorrect: boolean, feedback: string) => {
+    setAnswerFeedBack({ isCorrect, feedback });
+    setTimeout(() => {
+      setAnswerFeedBack({ isCorrect: false, feedback: "" });
+    }, 3000);
+  };
   useEffect(() => {
     const intervalId = setInterval(() => {
       // WE NEED TO FIND THE SLOWEST BALLOON AND USE IT DISAPPEARANCE TO TRIGGER ANOTHER ENTRY FROM THE TOP
-      const slowesBalloon = findSlowestBalloon(balloons);
-
-      if (
-        slowesBalloon.ref.current.getBoundingClientRect().top >=
-        screenHeight - 70
-      ) {
-        // THE VALUE ALWAYS SEEMS TO EXCEED THE ACTUAL SCREEN HEIGHT, I AM MINUSING TO REDUCE THE TIME IT TAKES TO COME BACK FROM THE TOP
-        // LIKE THIS WE DONT HAVE TO CHECK EACH BALLOON POSITION TO RESURFACE THEM, ASPA SAY ONCE THE SLOWEST BALLOON DISAPPEARS EVERYONE
-        //SHOULD ENTER BACK
-        setShowObject((obj) => ({
-          ...obj,
-          objectOne: false,
-        }));
-        handleDecreasePoints();
+      const slowestBalloon: any = findSlowestBalloon(balloons).ref;
+      switch (slowestBalloon) {
+        case "balloonOne":
+          if (
+            balloonOne.current.getBoundingClientRect().top >=
+            screenHeight - 70
+          ) {
+            // THE VALUE ALWAYS SEEMS TO EXCEED THE ACTUAL SCREEN HEIGHT, I AM MINUSING TO REDUCE THE TIME IT TAKES TO COME BACK FROM THE TOP
+            // LIKE THIS WE DONT HAVE TO CHECK EACH BALLOON POSITION TO RESURFACE THEM, ASPA SAY ONCE THE SLOWEST BALLOON DISAPPEARS EVERYONE
+            //SHOULD ENTER BACK
+            setShowObject((obj) => ({
+              ...obj,
+              objectOne: false,
+            }));
+            handleDecreasePoints();
+          }
+          break;
+        case "balloonTwo":
+          if (
+            balloonTwo.current.getBoundingClientRect().top >=
+            screenHeight - 70
+          ) {
+            // THE VALUE ALWAYS SEEMS TO EXCEED THE ACTUAL SCREEN HEIGHT, I AM MINUSING TO REDUCE THE TIME IT TAKES TO COME BACK FROM THE TOP
+            // LIKE THIS WE DONT HAVE TO CHECK EACH BALLOON POSITION TO RESURFACE THEM, ASPA SAY ONCE THE SLOWEST BALLOON DISAPPEARS EVERYONE
+            //SHOULD ENTER BACK
+            setShowObject((obj) => ({
+              ...obj,
+              objectOne: false,
+            }));
+            handleDecreasePoints();
+          }
+          break;
+        case "balloonThree":
+          if (
+            balloonThree.current.getBoundingClientRect().top >=
+            screenHeight - 70
+          ) {
+            // THE VALUE ALWAYS SEEMS TO EXCEED THE ACTUAL SCREEN HEIGHT, I AM MINUSING TO REDUCE THE TIME IT TAKES TO COME BACK FROM THE TOP
+            // LIKE THIS WE DONT HAVE TO CHECK EACH BALLOON POSITION TO RESURFACE THEM, ASPA SAY ONCE THE SLOWEST BALLOON DISAPPEARS EVERYONE
+            //SHOULD ENTER BACK
+            setShowObject((obj) => ({
+              ...obj,
+              objectOne: false,
+            }));
+            handleDecreasePoints();
+          }
+          break;
+        case "balloonFour":
+          if (
+            balloonFour.current.getBoundingClientRect().top >=
+            screenHeight - 70
+          ) {
+            // THE VALUE ALWAYS SEEMS TO EXCEED THE ACTUAL SCREEN HEIGHT, I AM MINUSING TO REDUCE THE TIME IT TAKES TO COME BACK FROM THE TOP
+            // LIKE THIS WE DONT HAVE TO CHECK EACH BALLOON POSITION TO RESURFACE THEM, ASPA SAY ONCE THE SLOWEST BALLOON DISAPPEARS EVERYONE
+            //SHOULD ENTER BACK
+            setShowObject((obj) => ({
+              ...obj,
+              objectOne: false,
+            }));
+            handleDecreasePoints();
+          }
+          break;
       }
     }, 1000);
 
@@ -74,7 +136,11 @@ const GameDisplayObject = ({
 
   const handleCheckAnswerCorrect = (selectedOption: string) => {
     if (selectedOption === answer) {
+      handleGiveFeedback(true, `Correct!`);
       handleIncreasePoints();
+    } else {
+      handleGiveFeedback(false, `Oops! it was ${answer}`);
+      handleDecreasePoints();
     }
     setShowObject((obj) => ({
       ...obj,
@@ -84,15 +150,35 @@ const GameDisplayObject = ({
 
   return (
     <div className="h-screen overflow-hidden p-2 px-6">
-      <div className="w-full my-3 flex items-center justify-center">
+      <div className="w-full my-3 flex flex-col items-center justify-center">
         <span className="text-semibold text-2xl">{question}</span>
+
+        {answerFeedBack.feedback !== "" ? (
+          <span
+            className={`${
+              !answerFeedBack.isCorrect ? "bg-red-600" : "bg-green-600"
+            } p-3 rounded-md text-white font-bold`}
+          >
+            {answerFeedBack.feedback}
+          </span>
+        ) : (
+          ""
+        )}
       </div>
       {showObject.objectOne && (
         <div className="flex relative h-full w-full justify-around overflow-hidden">
-          {balloons.map((balloon) => (
+          {balloons.map((balloon, index) => (
             <motion.div
               key={balloon.id}
-              ref={balloon.ref}
+              ref={
+                index === 0
+                  ? balloonOne
+                  : index === 1
+                  ? balloonTwo
+                  : index === 2
+                  ? balloonThree
+                  : balloonFour
+              }
               transition={{
                 duration: balloon.movementSpeed,
                 delay: 0,

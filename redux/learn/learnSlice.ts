@@ -21,6 +21,7 @@ type LessonSliceType = {
   courses: GeneralCurriculumType[] | null;
   combinedCourseAndCurriculumObject: AllCoursesResponseType[] | null;
   activeCourseCurriculum: GenCurriculumListType[] | null;
+  finishedFullCourseTopics: string[] | null;
   lesson: LessonObjectType | null;
   isLoading: boolean;
 };
@@ -30,6 +31,7 @@ const initailState: LessonSliceType = {
   lesson: null,
   isLoading: false,
   activeCourseCurriculum: null,
+  finishedFullCourseTopics: null,
 };
 
 const checkExpiredToken = (payload: any) => {
@@ -52,6 +54,19 @@ const lessonSlice = createSlice({
           ? filterLessonsById(courseCurriculum.curriculum) // WE HAVE TO ALWAYS FILTER THE CURRICULUM GOING INTO THE,
           : null; // ACTIVE CURRICULUM VALUE BECAUSE THE BACKEND SOMETIMES RETURNS AN UNSORTED LESSONS LIST
       }
+    },
+    handleGetCompletedTopics: (state) => {
+      const completedLessonTitles: string[] = [];
+      state.combinedCourseAndCurriculumObject?.forEach((course) => {
+        course.curriculum.forEach((curriculum) => {
+          curriculum.lessons.forEach((lesson) => {
+            if (lesson.isLesson_completed) {
+              completedLessonTitles.push(lesson.title);
+            }
+          });
+        });
+      });
+      state.finishedFullCourseTopics = completedLessonTitles;
     },
   },
   extraReducers: (builder) => {
@@ -86,6 +101,7 @@ const lessonSlice = createSlice({
         console.log("ALL COURSE OBJ: ", userCourses);
         state.courses = userCourses.map((course) => course.course);
         state.combinedCourseAndCurriculumObject = userCourses;
+        console.log("ALL COURSES: ", userCourses);
         state.isLoading = false;
       }),
       builder.addCase(getCourses.rejected, (state, { payload }) => {
@@ -185,5 +201,6 @@ const lessonSlice = createSlice({
   },
 });
 
-export const { handleGetCurriculum } = lessonSlice.actions;
+export const { handleGetCurriculum, handleGetCompletedTopics } =
+  lessonSlice.actions;
 export default lessonSlice.reducer;
