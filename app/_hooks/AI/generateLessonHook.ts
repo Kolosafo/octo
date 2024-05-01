@@ -29,6 +29,7 @@ const useGenerateLesson = ({
   );
   const router = useRouter();
   const [lessonLength, setLessonLength] = useState(0);
+  const [error, setError] = useState(false);
   const [isStateLoading, setIsStateLoading] = useState(false);
   const [isSavingLesson, setIsSavingLesson] = useState(false);
   const [isRegeneration, setIsRegeneration] = useState(false);
@@ -82,12 +83,17 @@ const useGenerateLesson = ({
           currentLessonId: currentLessonId,
           lastLessonLearnt: lastLearntLesson,
           subject: subject,
+        }).catch(() => {
+          setError(true);
+          setIsStateLoading(false);
         });
+        if (response) {
+          setFullLessonObject(response);
+          setLessonObjectList(response.lessonDetails);
+        }
         console.log("PARAMETERS SENT", subject);
         console.log("DONE LOADING...", response);
-        setLessonObjectList(response.lessonDetails);
         setIsStateLoading(false);
-        setFullLessonObject(response);
         // return;
       })();
     } else {
@@ -144,6 +150,7 @@ const useGenerateLesson = ({
     lessonObjectList,
     reason,
     lessonLength,
+    error,
     setLessonObjectList,
     setShowDontUnderstand,
     setIsSavingLesson,
