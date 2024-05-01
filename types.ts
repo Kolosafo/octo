@@ -256,3 +256,20 @@ export type QuickLearnType = {
   subject: string;
   lessonDetails: GeneralInteractiveLessonType[];
 };
+
+export type PracticeObjectType = {
+  score: string;
+  questions: PracticeQuestionsType[];
+};
+
+export type PracticeQuestionsType = {
+  id: string | number;
+  title: string;
+  details: string;
+  question: string;
+  answerType: "options";
+  options: AnswerOptionType[];
+  answer: string;
+  type: "quiz";
+  isComplete: boolean;
+};

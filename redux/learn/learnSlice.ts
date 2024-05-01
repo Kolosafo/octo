@@ -6,7 +6,10 @@ import {
   getLesson,
   saveLessonLearnt,
 } from "@/api/course";
-import { filterLessonsById } from "@/helpers/helper";
+import {
+  filterLessonsById,
+  getSingleCourseCompletedLessons,
+} from "@/helpers/helper";
 import {
   BackendCurriculumRequestType,
   GenCurriculumListType,
@@ -67,6 +70,21 @@ const lessonSlice = createSlice({
         });
       });
       state.finishedFullCourseTopics = completedLessonTitles;
+    },
+    handleGetSingleCourseCompletedTopics: (
+      state,
+      { payload }: { payload: string }
+    ) => {
+      if (state.combinedCourseAndCurriculumObject) {
+        const courseLessonCompleted = getSingleCourseCompletedLessons(
+          payload,
+          state.combinedCourseAndCurriculumObject
+        );
+        const completedLessonTitles = courseLessonCompleted.map(
+          (lesson) => lesson.title
+        );
+        state.finishedFullCourseTopics = completedLessonTitles;
+      }
     },
   },
   extraReducers: (builder) => {
@@ -201,6 +219,6 @@ const lessonSlice = createSlice({
   },
 });
 
-export const { handleGetCurriculum, handleGetCompletedTopics } =
+export const { handleGetCurriculum, handleGetCompletedTopics, handleGetSingleCourseCompletedTopics } =
   lessonSlice.actions;
 export default lessonSlice.reducer;

@@ -21,7 +21,6 @@ const Game = () => {
   const { finishedFullCourseTopics } = useSelector(
     (store: IRootState) => store.lesson
   );
-
   const [activeStage, setActiveStage] = useState(0);
   const [gameData, setGameData] = useState<GameDataType | null>(null);
   const [gameOver, setGameOver] = useState(false);
@@ -72,7 +71,8 @@ const Game = () => {
     <div className="w-full h-[70vh] gap-3 flex flex-col justify-center items-center">
       <BallTriangle />
       <span className="violet-text font-bold">
-        <span className="text-lg dark-peach-text">Octo</span> is cooking your game
+        <span className="text-lg dark-peach-text">Octo</span> is cooking your
+        game
       </span>
     </div>
   ) : (
