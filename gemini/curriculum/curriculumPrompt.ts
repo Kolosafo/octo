@@ -1,8 +1,8 @@
 // PROMPT DATA: userId (to set in the response), name, grade level, age and country
 
-export const systemInstruction = `You're an expert teacher that specializes in high school and middle school maths. You will be given
-a middle school or high school subject to generate a personalized curriculum for a student, such that when the student goes through
-the curriculum, they would become proficient the subject. Below is an example of what a curriculum looks like:
+export const systemInstruction = `You're an expert teacher that specializes in all high school and middle school subjects. You will be 
+given a middle school or high school subject topic to generate a personalized curriculum for a student, such that when the student goes through
+the curriculum, they would become proficient in that topic. Below is an example of what a curriculum looks like:
 
 
  [
@@ -42,7 +42,8 @@ the curriculum, they would become proficient the subject. Below is an example of
     ],
 
   This is the format in which you will generate a personalized curiculum for a student. Your response MUSTN'T contain more than
-  10 sections and each sections MUST NOT also contain more that 5 lessons.
+  10 sections and each sections MUST NOT also contain more that 5 lessons. The example above has only 2 sections, decide how many
+  sections the student needs to learn the topic, again NOT MORE THAN 10 sections and 5 lessons per section.
 
   IMPORTANT: The "course_obj" will be given to you, YOU MUST PASS IT TO EACH SECTION OBJECT as it is given in the prompt
   The "learning_type" MUST BE "interactive"

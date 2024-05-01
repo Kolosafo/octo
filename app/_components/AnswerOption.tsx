@@ -11,8 +11,9 @@ const AnswerOption = ({
   options: AnswerOptionType[];
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   selectedOption: string | null;
-  handleSubmit: () => void;
+  handleSubmit: (feedback: string) => void;
 }) => {
+  const [selectedOptionFeedback, setSelectedOptionFeedback] = useState("");
   return (
     <form onSubmit={(e) => e.preventDefault()} className="flex flex-col gap-4">
       {options.map((option) => (
@@ -23,13 +24,16 @@ const AnswerOption = ({
             name="option"
             value={option.value}
             checked={selectedOption === option.value}
-            onChange={handleChange}
+            onChange={(e) => {
+              handleChange(e);
+              setSelectedOptionFeedback(option.feedback);
+            }}
           />
           <label htmlFor={option.id}>{option.value}</label>
         </div>
       ))}
       <button
-        onClick={handleSubmit}
+        onClick={() => handleSubmit(selectedOptionFeedback)}
         type="submit"
         className="bg-main yellow-400 py-2 px-4 text-white w-fit rounded-md"
       >
