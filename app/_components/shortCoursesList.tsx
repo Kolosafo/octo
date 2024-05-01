@@ -2,13 +2,16 @@ import { QuickLearnType } from "@/types";
 import { useRouter } from "next/navigation";
 import React from "react";
 import TopicCard from "./TopicCard";
+import PracticeCard from "./practiceCard";
 
 export const ShortCoursesList = ({
   shortCourses,
   isLogged,
+  displayType,
 }: {
   shortCourses: QuickLearnType[] | null;
   isLogged: boolean;
+  displayType: "learn" | "practice";
 }) => {
   const router = useRouter();
   return !shortCourses || shortCourses.length === 0 ? (
@@ -26,14 +29,18 @@ export const ShortCoursesList = ({
       </button>
     </div>
   ) : (
-    shortCourses.map((course) => (
-      <TopicCard
-        key={course.id}
-        subject={course.subject}
-        courseId={course.id ?? 0}
-        progressPercentage={100}
-        type="Short course"
-      />
-    ))
+    shortCourses.map((course) =>
+      displayType === "learn" ? (
+        <TopicCard
+          key={course.id}
+          subject={course.subject}
+          courseId={course.id ?? 0}
+          progressPercentage={100}
+          type="Short course"
+        />
+      ) : (
+        <PracticeCard key={course.id} subject={course.subject} />
+      )
+    )
   );
 };

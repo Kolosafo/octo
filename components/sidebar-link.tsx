@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ReactElement } from 'react';
 
-interface SidebarLinkProps {
+export interface SidebarLinkProps {
   path: string;
   icon: ReactElement;
   text: string;

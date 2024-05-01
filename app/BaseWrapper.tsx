@@ -1,13 +1,8 @@
-'use client';
-import { keepUserLogged } from '@/api/account';
-import { ReduxProvider } from '@/redux/provider';
-import { ThunkDispatch } from '@reduxjs/toolkit';
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import ReduxWrapper from './ReduxWrapper';
-import { IRootState } from '@/redux/store';
-import AuthLoading from './_components/authLoading';
-import { useRouter } from 'next/navigation';
+"use client";
+import { keepUserLogged } from "@/api/account";
+import { ThunkDispatch } from "@reduxjs/toolkit";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 const BaseAppWrapper = ({
   children,
   fontFamily,
@@ -15,21 +10,22 @@ const BaseAppWrapper = ({
   children: React.ReactNode;
   fontFamily: any;
 }) => {
-  const router = useRouter();
-  const { authLoading } = useSelector((store: IRootState) => store.user);
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
-  const [authTokens, setAuthTokens] = useState<any>(() =>
-    localStorage.getItem("authTokens")
-      ? JSON.parse(localStorage.getItem("authTokens") || "{}")
-      : null
-  );
+  const [authTokens, setAuthTokens] = useState<any>(null);
+
+  useEffect(() => {
+    const getUserfromLocalStorage = localStorage.getItem("authTokens")
+      ? JSON.parse(localStorage.getItem("authTokens") || "")
+      : null;
+    setAuthTokens(getUserfromLocalStorage);
+  }, []);
 
   useEffect(() => {
     if (authTokens && authTokens.refresh) {
       dispatch(keepUserLogged(authTokens.refresh));
     }
   }, [authTokens, dispatch]);
-  
+
   return (
     <body className={fontFamily}>
       <main className='relative min-h-screen w-full'>{children}</main>

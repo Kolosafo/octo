@@ -6,15 +6,18 @@ import {
   checkNumberOfLessons,
 } from "@/helpers/helper";
 import { useRouter } from "next/navigation";
+import PracticeCard from "./practiceCard";
 
 const CoursesList = ({
   courses,
   combinedCourses,
   isLogged,
+  displayType,
 }: {
   courses: GeneralCurriculumType[] | null;
   combinedCourses: AllCoursesResponseType[] | null;
   isLogged: boolean;
+  displayType: "learn" | "practice";
 }) => {
   const router = useRouter();
   return !courses || courses.length === 0 ? (
@@ -30,19 +33,23 @@ const CoursesList = ({
       </button>
     </div>
   ) : (
-    courses.map((course) => (
-      <TopicCard
-        key={course.id}
-        subject={course.subject}
-        courseId={course.id}
-        numOfLessons={checkNumberOfLessons(course.id, combinedCourses)}
-        progressPercentage={calculateCourseCompletion(
-          course.id,
-          combinedCourses
-        )}
-        type="Full course"
-      />
-    ))
+    courses.map((course) =>
+      displayType === "learn" ? (
+        <TopicCard
+          key={course.id}
+          subject={course.subject}
+          courseId={course.id}
+          numOfLessons={checkNumberOfLessons(course.id, combinedCourses)}
+          progressPercentage={calculateCourseCompletion(
+            course.id,
+            combinedCourses
+          )}
+          type="Full course"
+        />
+      ) : (
+        <PracticeCard key={course.id} subject={course.subject} />
+      )
+    )
   );
 };
 
