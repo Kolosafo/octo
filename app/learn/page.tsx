@@ -113,7 +113,7 @@ const Page = () => {
                     onClick={() => {
                       !isLogged
                         ? router.push("/auth/login")
-                        : router.push("/new-course?quickLearn=true");
+                        : router.push("/learn/new-course?quickLearn=true");
                     }}
                     className="flex items-center gap-2 whitespace-nowrap px-4 py-2 bg-main text-white font-semibold rounded-md"
                   >
