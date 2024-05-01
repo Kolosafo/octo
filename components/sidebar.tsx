@@ -18,6 +18,7 @@ import { ThunkDispatch } from "@reduxjs/toolkit";
 import { logout } from "@/redux/auth/authSlice";
 import { BiError } from "react-icons/bi";
 import Skeleton from "./skeleton";
+import { GiBrain } from "react-icons/gi";
 
 const Sidebar = () => {
   const router = useRouter();
@@ -96,10 +97,10 @@ const Sidebar = () => {
             expanded={expanded}
           />
           <SidebarLink
-            path="/learn/performance"
-            text="Performance"
+            path="/practice"
+            text="Practice"
             icon={
-              <BiLineChart
+              <GiBrain
                 size={25}
                 className="group-hover:text-main justify-self-center"
               />

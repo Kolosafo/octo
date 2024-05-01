@@ -152,3 +152,30 @@ export function findSlowestBalloon(
     return current.movementSpeed > slowest.movementSpeed ? current : slowest;
   }, balloons[0]); // Provide an initial value (first element)
 }
+
+export function getSingleCourseCompletedLessons(
+  courseTitle: string,
+  courseData: AllCoursesResponseType[]
+) {
+  // Loop through the course data array
+  for (const course of courseData) {
+    // Check if the course title matches the input parameter
+    if (course.course.subject === courseTitle) {
+      const completedLessons = [];
+      // Loop through the course's curriculum sections
+      for (const section of course.curriculum) {
+        // Loop through the lessons within each section
+        for (const lesson of section.lessons) {
+          // If the lesson is marked as completed, add it to the array
+          if (lesson.isLesson_completed) {
+            completedLessons.push(lesson);
+          }
+        }
+      }
+      return completedLessons;
+    }
+  }
+
+  // If no matching course is found, return an empty array
+  return [];
+}
