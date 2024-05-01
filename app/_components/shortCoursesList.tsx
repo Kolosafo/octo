@@ -22,7 +22,7 @@ export const ShortCoursesList = ({
         onClick={() => {
           !isLogged
             ? router.push("/auth/login")
-            : router.push("/new-course?quickLearn=true");
+            : router.push("/learn/new-course?quickLearn=true");
         }}
       >
         Take A Short Course

@@ -5,12 +5,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "@/redux/store";
 import { ThunkDispatch } from "@reduxjs/toolkit";
 import { getCourses } from "@/api/course";
-import Loading from "../loading";
+
 import { GiBrain } from "react-icons/gi";
 import { ImInfo } from "react-icons/im";
 
-import CoursesList from "../_components/coursesList";
-import PracticeInfoCard from "../_components/practiceInfoCard";
+import CoursesList from "../../_components/coursesList";
+import PracticeInfoCard from "../../_components/practiceInfoCard";
+import Loader from "@/components/loader";
 
 const Page = ({ params }: { params?: { newCourse: string } }) => {
   const [showMore, setShowMore] = useState(false);
@@ -51,7 +52,7 @@ const Page = ({ params }: { params?: { newCourse: string } }) => {
             </p>
           </div>
         ) : isLoading || authLoading ? (
-          <Loading />
+          <Loader label="Loading..." />
         ) : (
           <div className="max-w-screen-md mx-auto flex flex-col gap-8 bg-white min-h-full">
             <div className="w-full flex items-center justify-between">
