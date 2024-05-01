@@ -55,13 +55,16 @@ const Page = ({ params }: { params: { courseObj: string[] } }) => {
       {!generatedCurriculum || isLoading ? (
         <div className="h-60 w-full flex flex-col relative justify-center items-center gap-6">
           <span className="absolute top-0"></span>
-          <Loading
-            loadMsg={`Professor Octo is generating your ${decodeSubject} Masterclass`}
-          />
+          <Loading />
         </div>
       ) : (
         generatedCurriculum?.map((item, index) => (
-          <LessonList courseTitle={decodeSubject} key={index} {...item} courseId={parseInt(courseId)} />
+          <LessonList
+            courseTitle={decodeSubject}
+            key={index}
+            {...item}
+            courseId={parseInt(courseId)}
+          />
         ))
       )}
     </div>
