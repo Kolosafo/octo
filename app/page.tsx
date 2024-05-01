@@ -23,7 +23,7 @@ export default function Page() {
             <BsArrowRight aria-hidden='true' />
           </Link>
           <Link
-            href='/auth/sign-in'
+            href='/auth/login'
             className='w-fit p-2 flex items-center justify-center font-semibold rounded-md gap-2 border-2 border-main hover:bg-main/10 outline-none min-w-[8rem] focus-visible:gap-4 focus-visible:bg-main/10 transition-all duration-300'
           >
             Enroll
