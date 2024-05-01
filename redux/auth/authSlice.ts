@@ -99,7 +99,10 @@ const authSlice = createSlice({
     }),
       builder.addCase(registerUser.fulfilled, (state, { payload }) => {
         const rawUserData: BackendUserType = payload.data;
-        localStorage.setItem("authTokens", JSON.stringify(payload.access));
+        localStorage.setItem(
+          "authTokens",
+          JSON.stringify({ access: payload.access, refresh: payload.refresh })
+        );
         state.user = {
           email: rawUserData.email,
           id: rawUserData.id,
