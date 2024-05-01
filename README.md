@@ -66,4 +66,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 - [Dauda](https://github.com/kolosafo)
 - [Taqib](https://github.com/taqrah)
-- [Ibrahim](https://github.com/taqrah)
+- [Ibrahim](https://github.com/IbrahimDoba)

@@ -97,12 +97,12 @@ const Sidebar = () => {
             expanded={expanded}
           />
           <SidebarLink
-            path="/practice"
+            path="/learn/practice"
             text="Practice"
             icon={
               <GiBrain
                 size={25}
-                className="group-hover:text-main justify-self-center"
+                className="group-hover:text-main"
               />
             }
             expanded={expanded}

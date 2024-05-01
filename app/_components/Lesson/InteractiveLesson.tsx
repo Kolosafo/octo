@@ -62,7 +62,7 @@ const InteractiveLesson = ({
       <div>{parse(props.details)}</div>
       <button
         onClick={() => handleIsComplete(props.id)}
-        className="flex items-center justify-center gap-2 font-semibold text-white text-center text-light py-2 px-6 bg-main rounded-xl border-2 hover:text-main hover:bg-transparent border-main focus-visible:outline-2 focus-visible:bg-transparent focus-visible:text-main transition"
+        className="flex w-fit ml-auto items-center justify-center gap-2 font-semibold text-white text-center text-light py-2 px-6 bg-main rounded-xl border-2 hover:text-main hover:bg-transparent border-main focus-visible:outline-2 focus-visible:bg-transparent focus-visible:text-main transition"
       >
         Next
         <BiChevronRight size={20} />
@@ -103,7 +103,7 @@ const InteractiveLesson = ({
           handleIsComplete(props.id);
           clearCheckAnswer();
         }}
-        className="flex items-center justify-center gap-2 font-semibold text-white text-center text-light py-2 px-6 bg-main rounded-xl border-2 hover:text-main hover:bg-transparent border-main focus-visible:outline-2 focus-visible:bg-transparent focus-visible:text-main transition"
+        className="flex items-center justify-center gap-2 font-semibold text-white text-center text-light py-2 px-6 bg-main rounded-md border-2 hover:text-main hover:bg-transparent border-main focus-visible:outline-2 focus-visible:bg-transparent focus-visible:text-main transition"
         disabled={props.type === "quiz" && !isAnswerCurrent.isCorrect}
       >
         Next
