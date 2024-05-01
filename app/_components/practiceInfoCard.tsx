@@ -1,5 +1,3 @@
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { ReactElement } from "react";
 
 interface Props {
@@ -8,7 +6,6 @@ interface Props {
 }
 
 function PracticeInfoCard(props: Props) {
-  const pathname = usePathname();
 
   return (
     <li className="relative group">
