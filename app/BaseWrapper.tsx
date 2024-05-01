@@ -33,6 +33,7 @@ const BaseAppWrapper = ({
   return (
     <body className={fontFamily}>
       <main className='relative min-h-screen w-full'>{children}</main>
+      <div id='portal'></div>
     </body>
   );
 };

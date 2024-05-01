@@ -14,7 +14,7 @@ function Page() {
       <div className='relative p-6 bg-white min-h-[70vh]'>
         <div className='p-10 flex gap-10 flex-wrap transition-all'>
           <Link
-            href={'/games/octoCrush'}
+            href={'/learn/games/octoCrush'}
             className='bg-main rounded-lg min-h-40 min-w-40 p-2 flex flex-col gap-4 outline-main outline-offset-2 outline-2 focus-visible:outline transition duration-300'
           >
             <div className='bg-mainBg w-full h-full rounded-md'></div>

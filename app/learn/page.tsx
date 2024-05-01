@@ -70,46 +70,32 @@ const Page = ({ params }: { params?: { newCourse: string } }) => {
           <Loader label="Loading..." />
         ) : (
           <div className="max-w-screen-md mx-auto flex flex-col gap-8 bg-white min-h-full">
-            <div className="w-full flex justify-between">
-              <div className="relative w-fit">
-                <div
-                  onClick={() => setShowChooseList(!showChooseList)}
-                  className="cursor-pointer flex gap-3 justify-center items-center p-2 outline outline-1"
+            <div className="w-full flex flex-col gap-8">
+              <div className='grid grid-cols-2 rounded-lg bg-white border border-main p-2'>
+                <button
+                  type='button'
+                  onClick={() => setCourseType('Full Courses')}
+                  className={`p-2 rounded-md transition duration-300 ${
+                    courseType === 'Full Courses' ? 'bg-main/50 text-altTxt' : ''
+                  }`}
                 >
-                  <span>{courseType}</span>
-                  <BiChevronDown size={25} />
-                </div>
-                <div
-                  className={`${
-                    showChooseList
-                      ? "visible -translate-x-0 py-2 opacity-100"
-                      : "invisible -translate-x-3 opacity-0"
-                  } flex flex-col justify-center gap-4 items-center bg-white p-3 absolute bottom-full -left-6 mb-2`}
+                  Full Courses
+                </button>
+                <button
+                  type='button'
+                  onClick={() => setCourseType('Short Courses')}
+                  className={`p-2 rounded-md transition duration-300 ${
+                    courseType === 'Short Courses' ? 'bg-main/50 text-altTxt' : ''
+                  }`}
                 >
-                  <button
-                    onClick={() => {
-                      setCourseType("Full Courses");
-                      setShowChooseList(false);
-                    }}
-                    className="flex items-center gap-2 px-4 whitespace-nowrap py-2 bg-main text-white font-semibold rounded-md"
-                  >
-                    Full Courses
-                  </button>
-                  <button
-                    onClick={() => {
-                      setCourseType("Short Courses");
-                      setShowChooseList(false);
-                    }}
-                    className="flex items-center gap-2 px-4 py-2 bg-main text-white font-semibold rounded-md"
-                  >
-                    Short Courses
-                  </button>
-                </div>
+                  Short Courses
+                </button>
               </div>
+
               <div className="relative self-end">
                 <button
                   onClick={() => setShowMore(!showMore)}
-                  className="flex items-center gap-2 px-4 py-2 bg-main text-white font-semibold rounded-md self-end"
+                  className="flex justify-center items-center gap-2 min-w-[8rem] p-3 bg-main text-white font-semibold rounded-md self-end"
                 >
                   <FiPlusCircle size={20} />
                   <span>New</span>
