@@ -33,7 +33,7 @@ export default function Page() {
       </div>
       <div className='relative'>
         <Image
-          src={placeholder}
+          src={"/octo.svg"}
           alt='hero image'
           width={500}
           height={600}
