@@ -18,6 +18,7 @@ import { FiPlusCircle } from "react-icons/fi";
 import { BiChevronDown } from "react-icons/bi";
 import CoursesList from "../_components/coursesList";
 import { ShortCoursesList } from "../_components/shortCoursesList";
+import Loader from "@/components/loader";
 
 type typeCourseType = "Full Courses" | "Short Courses";
 
@@ -66,7 +67,7 @@ const Page = ({ params }: { params?: { newCourse: string } }) => {
             </p>
           </div>
         ) : isLoading || authLoading ? (
-          <Loading />
+          <Loader label="Loading..." />
         ) : (
           <div className="max-w-screen-md mx-auto flex flex-col gap-8 bg-white min-h-full">
             <div className="w-full flex justify-between">
@@ -124,7 +125,7 @@ const Page = ({ params }: { params?: { newCourse: string } }) => {
                     onClick={() => {
                       !isLogged
                         ? router.push("/auth/login")
-                        : router.push("/new-course");
+                        : router.push("/learn/new-course");
                     }}
                     className="flex items-center gap-2 px-4 whitespace-nowrap py-2 bg-main text-white font-semibold rounded-md"
                   >

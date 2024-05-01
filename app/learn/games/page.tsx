@@ -1,5 +1,4 @@
 import Subject from '@/components/subject';
-import { subjects } from '@/mockups/subjects';
 import Link from 'next/link';
 import { BiPlay } from 'react-icons/bi';
 

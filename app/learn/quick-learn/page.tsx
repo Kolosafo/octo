@@ -3,6 +3,7 @@ import { updateQuickLearn } from "@/api/course";
 import InteractiveLesson from "@/app/_components/Lesson/InteractiveLesson";
 import LessonLoading from "@/app/_components/Loading";
 import useGenerateQuickLesson from "@/app/_hooks/AI/generateQuickLessonHook";
+import Skeleton from "@/components/skeleton";
 import { GeneralInteractiveLessonType } from "@/types";
 import { ThunkDispatch } from "@reduxjs/toolkit";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -73,10 +74,13 @@ const Page = () => {
 
       <section className="relative p-6 bg-white min-h-[80vh]">
         {isStateLoading || !lessonObjectList ? (
-          <LessonLoading
-            regeneration={isRegeneration}
-            lessonTitle={`${subject} lessons`}
-          />
+        <div className='max-w-screen-md mx-auto min-h-[60vh] flex flex-col gap-8 text-center'>
+          <p>
+            Professor Octo is{' '}
+            {isRegeneration ? 're-generating' : 'generating'} your{' '}lesson
+          </p>
+          <Skeleton type='lesson' />
+        </div>
         ) : (
           <>
             <div className="max-w-screen-md mx-auto">

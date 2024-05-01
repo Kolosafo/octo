@@ -142,16 +142,16 @@ const SubjectSearchSelect = ({
             id='search'
             type='text'
             autoComplete='off'
-            value={searchValue}
+            value={searchTopicValue}
             placeholder='Search a topic...'
-            onChange={handleInputChange}
+            onChange={handleTopicInputChange}
             className='w-full h-fit bg-transparent placeholder:text-sm placeholder:tracking-widest px-4 border-none outline-none transition duration-300'
           />
-          {searchValue && (
+          {searchTopicValue && (
             <button
               type='button'
               title='clear input'
-              onClick={() => setSearchValue('')}
+              onClick={() => setSearchTopicValue('')}
             >
               <IoClose aria-hidden='true' />
             </button>
