@@ -145,6 +145,7 @@ export type AssessmentType = {
 export type AnswerOptionType = {
   id: string;
   value: string;
+  feedback: string;
 };
 
 //// General Curriculum Type

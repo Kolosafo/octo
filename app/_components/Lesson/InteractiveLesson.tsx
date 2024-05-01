@@ -22,20 +22,20 @@ const InteractiveLesson = ({
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedOption(event.target.value);
   };
-  const handleCheckAnswer = () => {
+  const handleCheckAnswer = (feedback: string) => {
     if (props.answer && props.answer === selectedOption) {
-      setIsAnswerCorrect({ isCorrect: true, feedback: "Great job!" });
+      setIsAnswerCorrect({ isCorrect: true, feedback });
     } else {
       setIsAnswerCorrect({
         isCorrect: false,
-        feedback: "Oops! Your were close",
+        feedback,
       });
       setTimeout(() => {
         setIsAnswerCorrect({
           isCorrect: false,
           feedback: "",
         });
-      }, 3000);
+      }, 9000);
     }
   };
 
@@ -79,7 +79,7 @@ const InteractiveLesson = ({
             : ""
         }`}
       >
-        <span className="">
+        <span className={`${isAnswerCurrent.feedback ? "text-sm" : "text-base"}`}>
           {isAnswerCurrent.feedback ||
             "Waiting for your answer please take your time..."}
         </span>

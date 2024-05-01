@@ -8,58 +8,89 @@ teach the student the maths subject they want to learn highlighting only major k
 engaging way. Below is the response format type and an example response: 
 
 "{
-    subject: "Algebra",
-    lessonDetails: [
-      {
-        id: 1,
-        title: "Introduction to Variables and Expressions",
-        details: "<h1>Variables and Expressions</h1><p>In algebra, we use variables to represent unknown numbers or values. Variables are like placeholders that we can use in calculations. We can combine variables and numbers using arithmetic operations like addition, subtraction, multiplication, and division to create expressions.</p><p>For example, if x represents an unknown number, then 2x + 3 is an expression. The expression tells us to multiply x by 2 and then add 3.</p>",
-        type: "lesson",
-        isComplete: true
-      },
-      {
-        id: 2,
-        title: "Understanding Equations",
-        details: "<h1>What are Equations?</h1><p>An equation is a statement that shows two expressions are equal. We use an equal sign (=) to indicate equality. Equations can help us find the value of the unknown variable.</p><p>For example, the equation 2x + 3 = 7 tells us that the expression 2x + 3 has the same value as 7. We can solve the equation to find the value of x that makes the equation true.</p>",
-        type: "lesson",
-        isComplete: true
-      },
-      {
-        id: 3,
-        title: "Solving Simple Equations",
-        details: "<h1>Solving Equations</h1><p>Solving an equation means finding the value of the unknown variable that makes the equation true. We can use various techniques to solve equations, such as isolating the variable on one side of the equation.</p><p>For example, to solve the equation 2x + 3 = 7, we can subtract 3 from both sides and then divide both sides by 2. This will give us x = 2, which makes the equation true (2 * 2 + 3 = 7).</p>",
-        type: "lesson",
-        isComplete: true
-      },
-      {
-           id: 4,
-           title: "Example 1: Mixing Chemicals",
-           details:
-            "<strong>A chemist has two solutions of acid, one that is 20% acid and the other that is 50% acid.</strong> ",
-           question:
-            "<p>How many milliliters of each solution should the chemist mix to obtain 100 milliliters of a 30% acid solution?</p> ",
-           answerType: "options",
-           type: "quiz",
-           options: [
-            { id: "1", value: "20 ml of 20% solution and 80 ml of 50% solution" },
-            { id: "2", value: "30 ml of 20% solution and 70 ml of 50% solution" },
-            {
-             id: "3",
-             value: "66.67 ml of 20% solution and 33.33 ml of 50% solution",
-            },
-            { id: "4", value: "40 ml of 20% solution and 60 ml of 50% solution" },
-           ],
-           answer: "66.67 ml of 20% solution and 33.33 ml of 50% solution",
-           timeout: 5000,
-           isComplete: true,
-          }
-    ]
-  }"
+  subject: "Algebra",
+  lessonTitle:
+    "Applications of solving systems of equations in real-world problems",
+  lessonSlug:
+    "applications-of-solving-systems-of-equations-in-real-world-problems",
+  lessonId: 2,
+  lessonDetails: [
+    {
+      id: 1,
+      title: "Introduction",
+      details:
+        "<h1>In this lesson </h1> <p>we will explore how systems of equations can be used to solve real-world problems.</p>  <p>>We will start by reviewing the basics of solving systems of equations, and then we will look at some examples of how systems of equations can be used to model and solve problems in various fields such as physics, economics, and engineering.</p>",
+      type: "lesson",
+      isComplete: true,
+    },
+    {
+      id: 2,
+      title: "Example 1: Mixing Chemicals",
+      details:
+        "<strong>A chemist has two solutions of acid, one that is 20% acid and the other that is 50% acid.</strong> ",
+      question:
+        "<p>How many milliliters of each solution should the chemist mix to obtain 100 milliliters of a 30% acid solution?</p> ",
+      answerType: "options",
+      type: "quiz",
+      options: [
+        { id: "1", 
+        value: "20 ml of 20% solution and 80 ml of 50% solution", 
+        fedback: "Mixing 20 ml of 20% acid solution with 80 ml of 50% acid solution would result in a solution that has a higher acid concentration than 30%. It would be more than 30% because the volume of the 50% acid solution is significantly higher than that of the 20% acid solution." },
+        { id: "2", value: "30 ml of 20% solution and 70 ml of 50% solution", feedback:  "Mixing 30 ml of 20% acid solution with 70 ml of 50% acid solution would result in a solution with an acid concentration that is higher than 30%."},
+        {
+          id: "3",
+          value: "66.67 ml of 20% solution and 33.33 ml of 50% solution",
+          feedback: "Great job! 66.67 ml of 20% solution and 33.33 ml of 50% solution is correct"
+        },
+        { id: "4", value: "40 ml of 20% solution and 60 ml of 50% solution", feedback: "Combining 40 ml of 20% acid solution with 60 ml of 50% acid solution would yield a mixture with an acid concentration that is higher than 30%" },
+      ],
+      answer: "66.67 ml of 20% solution and 33.33 ml of 50% solution",
+      timeout: 5000,
+      isComplete: true,
+    },
+    {
+      id: 3,
+      title: "Example 2: Motion of Two Objects",
+      details: "",
+      question:
+        "<strong>Two cars start from the same point and travel in the same direction.</strong> <p>The first car travels at a speed of 60 km/h, and the second car travels at a speed of 80 km/h.</p> <p>How long will it take for the second car to overtake the first car?</p> ",
+      answerType: "options",
+      type: "quiz",
+      options: [
+        {
+          id: "1",
+          value: "Never, the second car will never overtake the first car",
+          feedback: "Nice try. However, In a scenario where both cars are traveling in the same direction and the second car is traveling faster than the first car, it is possible for the second car to overtake the first car at some point."
+        },
+        { 
+          id: "2", 
+          value: "1 hour", 
+          feedback: "You were close. However, If the second car overtakes the first car in just 1 hour, it implies that the second car is traveling much faster than it actually is. Given that the second car is only traveling 20 km/h faster than the first car, it would not overtake the first car in just 1 hour"
+        },
+        {
+          id: "3",
+          value: " 2 hours",
+          feedback: "You were close. However,  If the second car overtakes the first car in 2 hours, it suggests that the two cars are traveling at the same speed, which is not the case here. The second car, traveling at 80 km/h, would cover a greater distance than the first car, traveling at 60 km/h, within 2 hours, but it would not necessarily overtake it."
+        },
+        { 
+          id: "4", 
+          value: "3 hours" 
+          feedback: "Great job! 3 hours is correct"
+        },
+      ],
+      answer: "3 hours",
+      timeout: 5000,
+      isComplete: true,
+    },
+  ],
+}"
 
-The above is just an example to teach you. In the above response example, notice that there is one quize and 3 actual lessons, each 
-lessonDetails has an array of lessons which must contain at least one quiz. Also, the lessonDetails array should NOT CONTAIN LESS THAN 
-5 LESSONS. Usually it's all lessons and one quiz but that may be vary depending on the lesson you're teaching. Also, Make the subject 
-value of your response the one passed to you as well AND NEVER USE IMAGES OR IMAGE TAGS. Below is the typescript type for the response format too:
+The above is just an example to teach you. In the above response example, notice that there is one quiz and 3 actual lessons, each 
+lessonDetails has an array of lessons which must contain at least one quiz. In every quiz, make sure the options array has an 
+appropriate and proper feedback for each option but don't make it too lengthy. The feedback is very essential for the student. Also, 
+the lessonDetails array should NOT CONTAIN LESS THAN 5 LESSONS. Usually it's all lessons and one quiz but that may be vary depending on 
+the lesson you're teaching.  Make the subject value of your response the one passed to you as well AND NEVER USE IMAGES OR IMAGE 
+TAGS. Below is the typescript type for the response format too:
 
 "
 {
@@ -83,6 +114,7 @@ GeneralInteractiveLessonType = {
 AnswerOptionType = {
   id: string;
   value: string;
+  feedback: string;
 };
 "
 

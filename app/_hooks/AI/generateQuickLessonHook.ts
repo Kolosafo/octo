@@ -33,6 +33,7 @@ const useGenerateQuickLesson = ({
     (store: IRootState) => store.quickLearn
   );
   const router = useRouter();
+  const [error, setError] = useState(false);
   const [lessonLength, setLessonLength] = useState(0);
   const [isStateLoading, setIsStateLoading] = useState(false);
   const [isSavingLesson, setIsSavingLesson] = useState(false);
@@ -80,11 +81,16 @@ const useGenerateQuickLesson = ({
           gender: user.gender ?? "male",
           country: user.country ?? "Nigeria",
           subject: subject,
+        }).catch(() => {
+          setError(true);
+          setIsStateLoading(false);
         });
         console.log("DONE LOADING...", response);
-        setLessonObjectList(response.lessonDetails);
+        if (response) {
+          setLessonObjectList(response.lessonDetails);
+          setFullLessonObject(response);
+        }
         setIsStateLoading(false);
-        setFullLessonObject(response);
         // return;
       })();
     } else {
@@ -120,6 +126,7 @@ const useGenerateQuickLesson = ({
     lessonObjectList,
     reason,
     lessonLength,
+    error,
     setLessonObjectList,
     setShowDontUnderstand,
     setIsSavingLesson,
