@@ -1,8 +1,7 @@
 import React from "react";
 
 // pass props to change other properties like href, placeholder etc
-const RedirectButton = ({href, children }) => {
-  
+const RedirectButton = ({ href, children }: any) => {
   return (
     <div className=" relative  justify-center items-center flex-col  ">
       <a
