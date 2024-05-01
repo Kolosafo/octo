@@ -53,7 +53,7 @@ const Curriculum = ({ params }: { params: { courseObj: string[] } }) => {
       <section className='relative p-6 bg-white min-h-[70vh]'>
         <div className='max-w-screen-lg mx-auto rounded-t-3xl border-black flex flex-col gap-8 z-10 p-10 bg-white min-h-full'>
           {isLoading ? (
-            <Loading loadMsg='Fetching your course curriculum' />
+            <Loading  />
           ) : activeCourseCurriculum && activeCourseCurriculum.length > 0 ? (
             activeCourseCurriculum.map((item, index) => (
               <LessonList
