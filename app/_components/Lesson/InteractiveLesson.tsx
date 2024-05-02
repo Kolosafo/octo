@@ -47,7 +47,7 @@ const InteractiveLesson = ({
     setSelectedOption(null);
   };
   return props.type === "lesson" ? (
-    <div className="flex-col gap-6 flex py-10 px-10">
+    <div className="flex-col gap-6 flex p-10">
       {props.image && (
         <div>
           <Image
@@ -69,9 +69,9 @@ const InteractiveLesson = ({
       </button>
     </div>
   ) : (
-    <div className="flex-col gap-4 flex py-10 px-10">
+    <div className="flex-col gap-4 flex p-10">
       <div
-        className={`p-8 text-white rounded-md flex items-center justify-center bg-main ${
+        className={`p-8 text-white rounded-md flex items-center justify-center bg-main/50 ${
           isAnswerCurrent.feedback !== ""
             ? isAnswerCurrent.isCorrect
               ? "!bg-green-500"

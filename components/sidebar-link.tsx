@@ -31,7 +31,7 @@ function SidebarLink(props: SidebarLinkProps) {
       </Link>
       {!props.expanded && (
         <div
-          className={`
+          className={`max-md:hidden
             whitespace-nowrap absolute top-1.5 left-full rounded-md 
             px-2 py-1 ml-6 bg-main/10 text-main text-sm
             invisible opacity-20 -translate-x-3 transition-all
