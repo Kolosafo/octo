@@ -1,11 +1,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { BsArrowRight } from 'react-icons/bs';
-import placeholder from '../public/placeholder.jpg';
 
 export default function Page() {
   return (
-    <section className='min-h-screen grid place-items-center md:grid-cols-2 gap-4 lg:px-24'>
+    <section className='min-h-screen grid place-items-center md:grid-cols-2 gap-4 px-6 lg:px-24'>
       <div className='flex flex-col gap-6 lg:gap-10 justify-center h-full'>
         <h1 className='text-3xl lg:text-7xl font-bold mt-3'>
           Octo <span className='text-main'>The smart learning</span> AI tutor
@@ -31,18 +30,14 @@ export default function Page() {
           </Link>
         </div>
       </div>
-      <div className='relative'>
+      <div className='max-md:row-[1]'>
         <Image
           src={"/octo.svg"}
           alt='hero image'
           width={500}
           height={600}
-          className='object-cover rounded-lg relative z-10 shadow-xl'
-        />
-        <div
-          aria-hidden='true'
-          className='absolute top-3 -left-2.5 rounded-lg border-dashed border-2 border-main/50 w-full h-full'
-        ></div>
+          className='object-cover'
+        /> 
       </div>
     </section>
   );

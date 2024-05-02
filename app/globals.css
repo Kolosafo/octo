@@ -10,68 +10,34 @@
   --darkPeach: rgb(253, 150, 155);
   --altTxt: hsl(234 22% 37%);
   --background: hsl(0, 0%, 96%);
-  --gradient: radial-gradient(circle, rgba(138,76,125,1) 35%, rgba(253,150,155,1) 100%);
+  --gradient: radial-gradient(
+    circle,
+    rgba(138, 76, 125, 1) 35%,
+    rgba(253, 150, 155, 1) 100%
+  );
 
   --Skeleton: hsl(0, 0%, 80%);
-
 }
 
-body {
-  background-color: var(--background);
-  color: var(--altTxt);
-}
 
-@keyframes beat {
-  0% {
-    opacity: 100%;
+@layer base {
+  body {
+    background-color: var(--background);
+    color: var(--altTxt);
   }
-  50% {
-    opacity: 50%;
-  }
-  100% {
-    opacity: 100%;
-  }
-}@keyframes fade-in {
-	from {
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
-	}
-}
-@keyframes slide-down {
-	from {
-		opacity: 0.8;
-		transform: translateY(-2.3rem);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
-}
-
-@layer components {
-  dialog[open]::backdrop {
-		animation: fade-in 450ms forwards;
-	}
-	dialog[open] {
-		animation: slide-down 500ms forwards;
-	}
 }
 
 @layer utilities {
+  .no-scroll {
+    overflow: hidden;
+  }
+
   .text-balance {
     text-wrap: balance;
   }
 
-  .gradient{
+  .gradient {
     background: var(--gradient);
-  }
-
-  .skeleton {
-    background: var(--Skeleton);
-    background-size: 200% 100%;
-    animation: beat 3s infinite;
   }
 
   .fullCenter {
@@ -117,25 +83,27 @@ body {
   }
 }
 
-@keyframes slide {
-  0% {
-    transform: translateY(200rem);
-    opacity: 0.8;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-#lineChart {
-  max-width: 80%;
-  height: 100vh;
-  height: auto;
-  margin: 0 auto;
-  display: block;
-}
 
 @layer components {
+
+  dialog[open]::backdrop {
+    animation: fade-in 450ms forwards;
+  }
+
+  dialog[open] {
+    animation: slide-down 500ms forwards;
+  }
+
+  div[data-visible='true'] {
+    animation: fade-in 450ms forwards;
+  }
+
+  .skeleton {
+    background: var(--Skeleton);
+    background-size: 200% 100%;
+    animation: beat 3s infinite;
+  }
+
   .loader {
     width: 48px;
     height: 48px;
@@ -166,41 +134,7 @@ body {
     border-radius: 4px;
     animation: jump7456 0.5s linear infinite;
   }
-
-  @keyframes jump7456 {
-    15% {
-      border-bottom-right-radius: 3px;
-    }
-
-    25% {
-      transform: translateY(9px) rotate(22.5deg);
-    }
-
-    50% {
-      transform: translateY(18px) scale(1, 0.9) rotate(45deg);
-      border-bottom-right-radius: 40px;
-    }
-
-    75% {
-      transform: translateY(9px) rotate(67.5deg);
-    }
-
-    100% {
-      transform: translateY(0) rotate(90deg);
-    }
-  }
-
-  @keyframes shadow324 {
-    0%,
-    100% {
-      transform: scale(1, 1);
-    }
-
-    50% {
-      transform: scale(1.2, 1);
-    }
-  }
-
+  
   ::-webkit-scrollbar {
     width: 0.525rem;
   }
@@ -210,5 +144,81 @@ body {
   }
   ::-webkit-scrollbar-track {
     background: #f1f1f1;
+  }
+}
+
+/* animations */
+@keyframes jump7456 {
+  15% {
+    border-bottom-right-radius: 3px;
+  }
+
+  25% {
+    transform: translateY(9px) rotate(22.5deg);
+  }
+
+  50% {
+    transform: translateY(18px) scale(1, 0.9) rotate(45deg);
+    border-bottom-right-radius: 40px;
+  }
+
+  75% {
+    transform: translateY(9px) rotate(67.5deg);
+  }
+
+  100% {
+    transform: translateY(0) rotate(90deg);
+  }
+}
+
+@keyframes shadow324 {
+  0%,
+  100% {
+    transform: scale(1, 1);
+  }
+
+  50% {
+    transform: scale(1.2, 1);
+  }
+}
+
+@keyframes slide {
+  0% {
+    transform: translateY(200rem);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes beat {
+  0% {
+    opacity: 100%;
+  }
+  50% {
+    opacity: 50%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes slide-down {
+  from {
+    opacity: 0.8;
+    transform: translateY(-2.3rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

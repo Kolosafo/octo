@@ -103,7 +103,7 @@ const Page = () => {
         ) : (
           <>
             <div className='max-w-screen-md mx-auto'>
-              <div className='flex flex-col gap-6 justify-center'>
+              <div className='flex flex-col gap-6 justify-center px-10'>
                 <div className='flex items-center justify-center gap-8'>
                   {lessonObjectList.map(
                     (lessonObj: GeneralInteractiveLessonType, index: number) => (
