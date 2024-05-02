@@ -8,16 +8,16 @@ import { persistReducer } from "redux-persist";
 const lessonPersistConfig = {
   key: "lesson",
   storage,
-  blacklist: ["lesson", "isLoading"],
+  blacklist: ["lesson", "isLoading", "finishedFullCourseTopics"],
 };
 
 const authPersistConfig = {
   key: "auth",
   storage,
-  blacklist: ["lesson", "isLoading", "finishedFullCourseTopics"],
+  whitelist: ['user'],
 };
 const Allreducer = combineReducers({
-  user: authSlice,  
+  user: persistReducer(authPersistConfig, authSlice),  
   lesson: persistReducer(lessonPersistConfig, lessonSlice),
   quickLearn: quickLearnSlice
 });
