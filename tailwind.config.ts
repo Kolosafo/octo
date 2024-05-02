@@ -16,7 +16,10 @@ const config: Config = {
         altTxt: "hsl(234, 22%, 37%)",
         darkAccent: "hsl(357, 96%, 79%)",
         mainBg: "hsl(0, 0%, 96%)",
-      }
+      },
+      screens: {
+        'max-md': { max: '47.98em' },
+      },
     },
   },
   plugins: [],

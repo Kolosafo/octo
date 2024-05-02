@@ -32,7 +32,7 @@ const Sidebar = () => {
   );
 
   return (
-    <header className="z-20 border-r bg-white transition-all">
+    <header className="max-md:hidden z-20 border-r bg-white transition-all">
       <nav className="sticky top-0 h-full max-h-[100svh] flex flex-col gap-6 py-6 px-4 justify-between transition-all duration-300">
         {/* logo*/}
         <div
