@@ -10,8 +10,8 @@ export default function Page() {
           Octo <span className='text-main'>The smart learning</span> AI tutor
         </h1>
         <p className='text-xl lg:text-2xl max-w-[900px]'>
-          Supercharge your kids learning with Octo the personal AI tutor
-          designed to make learning as fun as possible.
+          Supercharge your learning with Octo the AI tutor
+          designed to make learning as easy and fun as possible.
         </p>
         <div className='flex gap-8'>
           <Link
@@ -32,9 +32,9 @@ export default function Page() {
       </div>
       <div className='max-md:row-[1]'>
         <Image
-          src={"/octo.svg"}
+          src={"/learning.svg"}
           alt='hero image'
-          width={500}
+          width={600}
           height={600}
           className='object-cover'
         /> 
