@@ -20,17 +20,10 @@ const BaseAppWrapper = ({
 
     if (getUserfromLocalStorage && getUserfromLocalStorage.refresh) {
       dispatch(keepUserLogged(getUserfromLocalStorage.refresh));
-    } else {
-      dispatch(logout());
     }
   }, [dispatch]);
 
-  return (
-    <body className={fontFamily}>
-      <main className="relative min-h-screen w-full">{children}</main>
-      <div id="portal"></div>
-    </body>
-  );
+  return <main className="relative min-h-screen w-full">{children}</main>;
 };
 
 export default BaseAppWrapper;
