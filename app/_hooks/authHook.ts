@@ -76,7 +76,7 @@ const useAuthHooks = () => {
         }
       })
       .catch((e) => {
-        setError("Email or Password Not Correct");
+        setError("An unknown error occurred. Please try again");
         dispatch(activeLoading(false));
       });
   };

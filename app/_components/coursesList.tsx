@@ -26,7 +26,7 @@ const CoursesList = ({
       <button
         className="violet-bg text-white px-4 py-2 rounded-md"
         onClick={() => {
-          !isLogged ? router.push("/auth/login") : router.push("/new-course");
+          !isLogged ? router.push("/auth/login") : router.push("/learn/new-course");
         }}
       >
         Start Learning
