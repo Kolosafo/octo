@@ -14,7 +14,7 @@ const lessonPersistConfig = {
 const authPersistConfig = {
   key: "auth",
   storage,
-  blacklist: ["lesson", "isLoading"],
+  blacklist: ["lesson", "isLoading", "finishedFullCourseTopics"],
 };
 const Allreducer = combineReducers({
   user: authSlice,  
