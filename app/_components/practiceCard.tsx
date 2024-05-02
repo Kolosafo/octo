@@ -24,7 +24,7 @@ const PracticeCard: FC<PracticeCardType> = ({ subject }) => {
             width={20}
             height={20}
             className="object-contain "
-            onClick={() => router.push(`/practice/single/${subject}`)}
+            onClick={() => router.push(`/learn/practice/single/${subject}`)}
           />
         </div>
       </div>
