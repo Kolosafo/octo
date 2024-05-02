@@ -7,14 +7,17 @@ import { handleGenerateCurriculum } from "@/gemini/curriculum/generateCurriculum
 import { BackendCurriculumRequestType, GenCurriculumListType } from "@/types";
 import { ThunkDispatch } from "@reduxjs/toolkit";
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
+import { IRootState } from "@/redux/store";
+import { calculateAgeFromDate } from "@/helpers/helper";
 
 const Page = ({ params }: { params: { courseObj: string[] } }) => {
   const router = useRouter();
 
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
   const [isLoading, setIsLoading] = useState(false);
+  const { user, isLogged } = useSelector((store: IRootState) => store.user);
   const [generatedCurriculum, setGeneratedCurriculum] = useState<
     null | GenCurriculumListType[]
   >(null);
@@ -36,12 +39,13 @@ const Page = ({ params }: { params: { courseObj: string[] } }) => {
       setIsLoading(true);
       const response = await handleGenerateCurriculum({
         courseId: parseInt(courseId),
-        name: "Kirin",
-        age: 11,
-        gradeLevel: 5,
-        schoolLevel: "middle school",
-        gender: "male",
-        country: "Nigeria",
+        name: user.firstName,
+        age: calculateAgeFromDate(user.dob ?? ""),
+        gradeLevel: user.gradeLevel ?? "",
+        learningPace: user.learningPace ?? "Slow",
+        schoolLevel: user.educationLevel ?? "middle school",
+        gender: user.gender ?? "male",
+        country: user.country ?? "USA",
         subject: decodeSubject,
       });
       console.log("AI RESPONSE: ", response);
@@ -49,7 +53,7 @@ const Page = ({ params }: { params: { courseObj: string[] } }) => {
       // setGeneratedCurriculum()
       setIsLoading(false);
     })();
-  }, [decodeSubject, courseId, dispatch, router]);
+  }, [decodeSubject, courseId, dispatch, router, user]);
   return (
     <div>
       {!generatedCurriculum || isLoading ? (

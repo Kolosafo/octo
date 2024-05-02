@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import octo from "../../../public/octo.svg"
+import octo from "../../../public/octo.svg";
 import { UpdateProfileReqType } from "@/types";
 import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "@/redux/store";
@@ -24,6 +24,7 @@ const Page = () => {
     country: "",
     gender: "",
     DOB: "",
+    learningPace: "Slow",
   });
 
   const handleChange = (
@@ -140,6 +141,26 @@ const Page = () => {
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
                 <option value="Prefer not to say">Prefer not to say</option>
+              </select>
+            </div>
+            <div className="flex flex-col gap-2.5">
+              <label
+                htmlFor="gender"
+                className="block text-altTxt text-sm md:text-base font-medium"
+              >
+                Do you consider yourself a fast or slow learner?
+              </label>
+              <select
+                name="gender"
+                id="gender"
+                className="py-4 px-4 rounded-md shadow-md element transition duration-300"
+                onChange={(e) => handleChange(e)}
+              >
+                <option value="">Select</option>
+                {/* // THESE ARE STRICTLY THE VALUES ACCEPTED BY THE BACKEND --> "Male", "Female" & "Prefer not to say" */}
+                <option value="Male">Fast</option>
+                <option value="Female">Slow</option>
+                <option value="I don't know">I don&apos;t know</option>
               </select>
             </div>
             <div className="flex flex-col gap-2.5">
