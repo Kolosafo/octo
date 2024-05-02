@@ -7,6 +7,7 @@ export type lessonPromptDataType = {
   name: string;
   age: number | string;
   gradeLevel: number | string;
+  learningPace: "Fast" | "Slow" | "I don't know";
   schoolLevel: "high school" | "middle school";
   gender: string;
   country: string;
@@ -31,7 +32,7 @@ const chat = model.startChat({
 });
 
 const lessonPrompt = (props: lessonPromptDataType) => {
-  return `${props.name} is a ${props.age} years old ${props.gender} from ${props.country} in grade ${props.gradeLevel} in 
+  return `${props.name} is a ${props.gender} ${props.age} year old ${props.learningPace} learner from ${props.country} in grade ${props.gradeLevel} and in 
 ${props.schoolLevel}. Teach ${props.name} "${props.lessonToLearn}" with it's lessonId being "${props.currentLessonId}" and under the subject:
  "${props.subject}", the last lesson ${props.name} learnt was "${props.lastLessonLearnt}".
 `;

@@ -38,7 +38,7 @@ const Page = () => {
     isLogged && courses ? dispatch(getUserQuickLearning()) : null; // we only want to get the Short courses when the courses have loaded:
     console.log("Endless loop check");
   }, [dispatch, isLogged, courses]); // THis is to prevent request overload to the DB
-  console.log("FULL COURSES: ", combinedCourseAndCurriculumObject);
+  console.log("isLogged: ", isLogged);
   return (
     <div className="relative min-h-screen gradient">
       <section className="sticky top-0 min-h-[30vh] flex items-center justify-center">

@@ -24,6 +24,7 @@ const initialState: InitialStateType = {
     lastName: "",
     email: "",
     gender: null,
+    learningPace: null,
     profile_picture: null,
     dob: null,
     country: null,
@@ -54,6 +55,7 @@ const authSlice = createSlice({
         firstName: "",
         lastName: "",
         email: "",
+        learningPace: null,
         gender: null,
         profile_picture: null,
         dob: null,
@@ -78,6 +80,7 @@ const authSlice = createSlice({
           id: rawUserData.id,
           country: rawUserData.country,
           firstName: rawUserData.first_name,
+          learningPace: rawUserData.learningPace,
           profile_picture: rawUserData.profile_picture,
           lastName: rawUserData.last_name,
           dob: rawUserData.DOB,
@@ -99,13 +102,17 @@ const authSlice = createSlice({
     }),
       builder.addCase(registerUser.fulfilled, (state, { payload }) => {
         const rawUserData: BackendUserType = payload.data;
-        localStorage.setItem("authTokens", JSON.stringify(payload.access));
+        localStorage.setItem(
+          "authTokens",
+          JSON.stringify({ access: payload.access, refresh: payload.refresh })
+        );
         state.user = {
           email: rawUserData.email,
           id: rawUserData.id,
           country: rawUserData.country,
           firstName: rawUserData.first_name,
           gender: rawUserData.gender,
+          learningPace: rawUserData.learningPace,
           profile_picture: rawUserData.profile_picture,
           lastName: rawUserData.last_name,
           dob: rawUserData.DOB,
@@ -129,6 +136,7 @@ const authSlice = createSlice({
         // console.log("RESPONSE: ", payload);
         if (!payload || !payload.access) {
           state.authLoading = false;
+          state.isLogged = false;
           return;
         }
         const rawUserData: BackendUserType = jwtDecode(payload.access);
@@ -139,6 +147,7 @@ const authSlice = createSlice({
           id: rawUserData.id,
           country: rawUserData.country,
           firstName: rawUserData.first_name,
+          learningPace: rawUserData.learningPace,
           profile_picture: rawUserData.profile_picture,
           lastName: rawUserData.last_name,
           dob: rawUserData.DOB,
@@ -157,6 +166,7 @@ const authSlice = createSlice({
           lastName: "",
           email: "",
           gender: null,
+          learningPace: null,
           profile_picture: null,
           dob: null,
           country: null,
@@ -180,6 +190,7 @@ const authSlice = createSlice({
           id: updatedUserProfile.id,
           country: updatedUserProfile.country,
           firstName: updatedUserProfile.first_name,
+          learningPace: updatedUserProfile.learningPace,
           profile_picture: updatedUserProfile.profile_picture,
           lastName: updatedUserProfile.last_name,
           dob: updatedUserProfile.DOB,

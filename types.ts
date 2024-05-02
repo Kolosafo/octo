@@ -8,6 +8,7 @@ export type USER = {
   lastName: string;
   email: string;
   dob: string | null;
+  learningPace: "Fast" | "Slow" | "I don't know" | null;
   gender: "male" | "female" | "prefer not to say" | null;
   profile_picture: string | null;
   country: string | null;
@@ -21,6 +22,7 @@ export type UpdateProfileReqType = {
   school_level: "middle school" | "high school" | "";
   grade_level: number;
   country: string;
+  learningPace: "Fast" | "Slow" | "I don't know";
 };
 
 export type BackendUserType = {
@@ -29,6 +31,7 @@ export type BackendUserType = {
   first_name: string;
   profile_picture: string;
   last_name: string;
+  learningPace: "Fast" | "Slow" | "I don't know" | null;
   gender: "male" | "female" | "prefer not to say";
   DOB: string;
   school_level: "middle school" | "high school";

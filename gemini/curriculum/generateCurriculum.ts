@@ -7,6 +7,7 @@ export type curriculumDataType = {
   name: string;
   age: number | string;
   gradeLevel: number | string;
+  learningPace: "Fast" | "Slow" | "I don't know";
   schoolLevel: "high school" | "middle school";
   gender: string;
   country: string;
@@ -23,7 +24,7 @@ const chat = model.startChat({
 });
 
 const curriculumPrompt = (props: curriculumDataType) => {
-  return `${props.name} is a ${props.age} years old ${props.gender} from ${props.country} in grade ${props.gradeLevel} in 
+  return `${props.name} is a ${props.gender} ${props.age} year old ${props.learningPace} learner from ${props.country} in grade ${props.gradeLevel} and in 
  ${props.schoolLevel}. ${props.name} wants to learn "${props.subject}", generate a personalized curriculum with a course_obj of
  "${props.courseId}" for ${props.name}.
 `;
