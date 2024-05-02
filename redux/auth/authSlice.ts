@@ -132,6 +132,7 @@ const authSlice = createSlice({
         // console.log("RESPONSE: ", payload);
         if (!payload || !payload.access) {
           state.authLoading = false;
+          state.isLogged = false;
           return;
         }
         const rawUserData: BackendUserType = jwtDecode(payload.access);

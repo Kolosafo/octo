@@ -70,7 +70,7 @@ const Sidebar = () => {
         </div>
 
         {/* alert */}
-        {isLogged && !user.gradeLevel && (
+        {!authLoading && isLogged && !user.gradeLevel && (
           <button
             onClick={() => {
               router.push("/auth/kyc");
@@ -89,48 +89,51 @@ const Sidebar = () => {
         )}
 
         {/* main nav */}
-        <ul className="flex flex-col gap-4 min-w-full py-4">
-          <SidebarLink
-            path="/learn"
-            text="Learn"
-            icon={<BiBook size={25} className="group-hover:text-main" />}
-            expanded={expanded}
-          />
-          <SidebarLink
-            path="/learn/practice"
-            text="Practice"
-            icon={
-              <GiBrain
-                size={25}
-                className="group-hover:text-main"
-              />
-            }
-            expanded={expanded}
-          />
-          <SidebarLink
-            path="/learn/lessons"
-            text="Your Lessons"
-            icon={
-              <MdFormatListBulletedAdd
-                size={25}
-                className="group-hover:text-main"
-              />
-            }
-            expanded={expanded}
-          />
-          <SidebarLink
-            path="/learn/games"
-            text="Games"
-            icon={<BsController size={25} className="group-hover:text-main" />}
-            expanded={expanded}
-          />
-          <SidebarLink
-            path="/learn/help"
-            text="Help"
-            icon={<MdHelpOutline size={25} className="group-hover:text-main" />}
-            expanded={expanded}
-          />
-        </ul>
+        {authLoading ? (
+          <Skeleton type="profile" />
+        ) : (
+          <ul className="flex flex-col gap-4 min-w-full py-4">
+            <SidebarLink
+              path="/learn"
+              text="Learn"
+              icon={<BiBook size={25} className="group-hover:text-main" />}
+              expanded={expanded}
+            />
+            <SidebarLink
+              path="/learn/practice"
+              text="Practice"
+              icon={<GiBrain size={25} className="group-hover:text-main" />}
+              expanded={expanded}
+            />
+            <SidebarLink
+              path="/learn/lessons"
+              text="Your Lessons"
+              icon={
+                <MdFormatListBulletedAdd
+                  size={25}
+                  className="group-hover:text-main"
+                />
+              }
+              expanded={expanded}
+            />
+            <SidebarLink
+              path="/learn/games"
+              text="Games"
+              icon={
+                <BsController size={25} className="group-hover:text-main" />
+              }
+              expanded={expanded}
+            />
+            <SidebarLink
+              path="/learn/help"
+              text="Help"
+              icon={
+                <MdHelpOutline size={25} className="group-hover:text-main" />
+              }
+              expanded={expanded}
+            />
+          </ul>
+        )}
 
         {/* user details / profile */}
         {authLoading ? (
