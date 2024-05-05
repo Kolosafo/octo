@@ -1,6 +1,7 @@
 # Octo - AI Tutor
 
 ![desktop preview of the app](./public/preview.png)
+- [OCTO SERVER / Backend](https://github.com/Kolosafo/octo-api)
 
 ## Overview
 
