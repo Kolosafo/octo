@@ -8,7 +8,7 @@ import {
 import moment from "moment";
 import { ImageLoaderProps } from "next/image";
 
-export const ROOT_ULR = "https://gemina-api-875e2fb4c9be.herokuapp.com"; //"http://127.0.0.1:8000";
+export const ROOT_ULR = "https://octo-api-5295a4ad6fa9.herokuapp.com"; //"http://127.0.0.1:8000";
 
 export function getLessonCompletionPercentage(lessons: SubjectLessonType[]) {
   const totalLessons = lessons.length;
