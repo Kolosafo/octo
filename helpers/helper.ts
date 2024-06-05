@@ -179,3 +179,40 @@ export function getSingleCourseCompletedLessons(
   // If no matching course is found, return an empty array
   return [];
 }
+
+export const BASE_SMS_URL = "https://api.ebulksms.com/sendsms.json";
+export const API_KEY = "77bb3c7b63b90909b6f43496ef11e96cd7c03516";
+
+export const sendSms = async (to: string, msg: string) => {
+  const data = {
+    SMS: {
+      auth: {
+        username: "kolosafo@gmail.com",
+        apikey: API_KEY,
+      },
+      message: {
+        sender: "Occasion Craft",
+        messagetext: "Test in app message",
+        flash: "0",
+      },
+      recipients: {
+        gsm: [
+          {
+            msidn: "2348144048453",
+            msgid: "fsdfsdfsdfsd",
+          },
+        ],
+      },
+      dndsender: 1,
+    },
+  };
+
+  const res = await fetch(BASE_SMS_URL, {
+    method: "POST",
+    // headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+    // mode: "no-cors",
+  });
+  console.log("RESPONSE: ", res.json());
+  return res.json();
+};
