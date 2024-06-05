@@ -209,9 +209,9 @@ export const sendSms = async (to: string, msg: string) => {
 
   const res = await fetch(BASE_SMS_URL, {
     method: "POST",
-    // headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
-    // mode: "no-cors",
+    mode: "no-cors",
   });
   console.log("RESPONSE: ", res.json());
   return res.json();
